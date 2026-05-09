@@ -1,0 +1,365 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  parentLabel: string;
+  parentPath: string;
+  description?: string;
+  stats: { label: string; value: string }[];
+  toc: { id: string; label: string }[];
+}
+const { title, subtitle, parentLabel, parentPath, description = '', stats, toc } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} — The Wine Bible</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Top navigation -->
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <div class="breadcrumb">
+          <a href={`${base}`} class="crumb">The Wine Bible</a>
+          <span class="crumb-sep">›</span>
+          <a href={parentPath} class="crumb">{parentLabel}</a>
+          <span class="crumb-sep">›</span>
+          <span class="crumb crumb-current">{title}</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="topic-hero">
+      <div class="hero-inner">
+        <p class="hero-subtitle">{subtitle}</p>
+        <h1 class="hero-title">{title}</h1>
+        <div class="stats-bar">
+          {stats.map(s => (
+            <div class="stat">
+              <span class="stat-value">{s.value}</span>
+              <span class="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Body: sidebar TOC + content -->
+    <div class="topic-body">
+
+      <aside class="toc-sidebar">
+        <nav class="toc-nav">
+          <p class="toc-heading">Contents</p>
+          {toc.map(item => (
+            <a href={`#${item.id}`} class="toc-link" data-section={item.id}>{item.label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <main class="topic-content">
+        <slot />
+      </main>
+
+    </div>
+
+  </body>
+</html>
+
+<script>
+  // Highlight active TOC section on scroll
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  const sections = document.querySelectorAll<HTMLElement>('.topic-section');
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[data-section="${entry.target.id}"]`);
+          active?.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px' }
+  );
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  /* Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 6, 5, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .crumb {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  a.crumb:hover { color: var(--accent); }
+  .crumb-current { color: var(--text-muted); }
+  .crumb-sep { color: var(--text-muted); font-size: 0.75rem; }
+
+  /* Hero */
+  .topic-hero {
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #140d0b 0%, var(--bg-primary) 100%);
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .stat-label {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Body layout */
+  .topic-body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* TOC Sidebar */
+  .toc-sidebar {
+    position: sticky;
+    top: 56px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .toc-heading {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .toc-link {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    padding: 0.3rem 0;
+    padding-left: 0.75rem;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+
+  .toc-link:hover { color: var(--text-secondary); }
+  .toc-link.active { color: var(--accent); border-left-color: var(--accent); }
+
+  /* Content */
+  .topic-content {
+    padding: 3rem 0 6rem;
+    min-width: 0;
+  }
+
+  /* Sections */
+  .topic-section {
+    padding-top: 3.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3.5rem;
+  }
+
+  .topic-section:first-child {
+    padding-top: 0;
+    border-top: none;
+    margin-top: 0;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 680px;
+  }
+
+  .section-body p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    max-width: 680px;
+  }
+
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* Cards grid */
+  .cards-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .cards-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .info-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-card-meta {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.625rem;
+  }
+
+  .info-card p {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Key-value facts list */
+  .fact-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .fact-key {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 0.15rem;
+  }
+
+  .fact-val {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .topic-body { grid-template-columns: 1fr; gap: 0; }
+    .toc-sidebar { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-inner { padding: 2rem 1rem 1.75rem; }
+    .stats-bar { gap: 1.25rem; }
+    .topic-content { padding: 2rem 0 4rem; }
+    .cards-grid-2, .cards-grid-3 { grid-template-columns: 1fr; }
+  }
+</style>

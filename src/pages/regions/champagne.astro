@@ -1,0 +1,772 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<TopicLayout
+  title="Champagne"
+  subtitle="Sparkling Wine · Northeastern France"
+  parentLabel="Regions"
+  parentPath={`${base}regions/`}
+  description="A comprehensive guide to Champagne — the region, the grapes, the method, and the great producers."
+  stats={[
+    { value: '~34,000 ha', label: 'Vineyard area' },
+    { value: '319', label: 'Villages (crus)' },
+    { value: '150 km', label: 'From Paris' },
+    { value: '~10.8 °C', label: 'Avg. growing temp.' },
+    { value: 'Min. 15 months', label: 'Aging (NV)' },
+    { value: 'Min. 36 months', label: 'Aging (Vintage)' },
+  ]}
+  toc={[
+    { id: 'overview',    label: 'Overview' },
+    { id: 'region',      label: 'The Region' },
+    { id: 'terroir',     label: 'Terroir & Climate' },
+    { id: 'grapes',      label: 'The Grapes' },
+    { id: 'production',  label: 'Production Method' },
+    { id: 'styles',      label: 'Styles' },
+    { id: 'label',       label: 'Reading the Label' },
+    { id: 'producers',   label: 'Notable Producers' },
+    { id: 'price',       label: 'Price Guide' },
+    { id: 'pairing',     label: 'Food Pairing' },
+  ]}
+>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="topic-section">
+    <h2 class="section-title">Overview</h2>
+    <p class="section-lead">
+      Champagne is the world's most celebrated sparkling wine, produced exclusively in the northernmost wine region of France. Its quality rests on three pillars: a unique chalk subsoil, a cool marginal climate that preserves natural acidity, and centuries of blending expertise that has no parallel anywhere else in the wine world.
+    </p>
+    <div class="section-body">
+      <p>Unlike most fine wines, which celebrate a single vineyard and a single vintage, the majority of Champagne is non-vintage — a deliberate act of blending across grape varieties, villages, and years. The objective is consistency and house style, not the expression of one place or one harvest. This philosophy is what makes the chef de cave (cellar master) one of the most important figures in fine wine.</p>
+      <p>The Champagne appellation is strictly controlled. Only wines produced within the delimited zone, from permitted grape varieties, using the traditional method, may be called Champagne. Everything else — however good — is sparkling wine.</p>
+    </div>
+  </section>
+
+  <!-- THE REGION -->
+  <section id="region" class="topic-section">
+    <h2 class="section-title">The Region</h2>
+    <p class="section-lead">Located 150 km northeast of Paris, Champagne sits at the very northern edge of viable viticulture in France. The region comprises five distinct sub-zones, each with different soils, exposures, and grape specialisations.</p>
+
+    <!-- SVG Map -->
+    <div class="map-container">
+      <svg viewBox="0 0 360 450" fill="none" xmlns="http://www.w3.org/2000/svg" class="region-map" aria-label="Map of Champagne sub-regions">
+
+        <!-- Montagne de Reims – western arm -->
+        <path d="M 110,78 C 88,95 80,130 82,165 C 84,195 98,215 118,225 L 162,228 L 162,210 C 140,208 120,195 112,175 C 104,155 104,120 118,98 Z"
+              fill="rgba(201,168,76,0.09)" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+
+        <!-- Montagne de Reims – eastern arm -->
+        <path d="M 250,78 C 272,95 280,130 278,165 C 276,195 262,215 242,225 L 198,228 L 198,210 C 220,208 240,195 248,175 C 256,155 256,120 242,98 Z"
+              fill="rgba(201,168,76,0.09)" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+
+        <!-- Marne river -->
+        <path d="M 30,248 Q 80,243 130,247 Q 155,249 180,247" stroke="#3d5a8a" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+
+        <!-- Vallée de la Marne -->
+        <rect x="30" y="232" width="148" height="36" rx="2"
+              fill="rgba(80,110,180,0.07)" stroke="rgba(100,130,200,0.35)" stroke-width="1.5"/>
+
+        <!-- Côte des Blancs -->
+        <rect x="184" y="240" width="32" height="110" rx="2"
+              fill="rgba(210,200,185,0.07)" stroke="rgba(210,200,185,0.4)" stroke-width="1.5"/>
+
+        <!-- Côte de Sézanne (continuation) -->
+        <rect x="184" y="356" width="32" height="36" rx="2"
+              fill="rgba(210,200,185,0.05)" stroke="rgba(210,200,185,0.25)" stroke-width="1" stroke-dasharray="4 3"/>
+
+        <!-- Dotted separator line -->
+        <line x1="200" y1="396" x2="260" y2="410" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+
+        <!-- Aube / Côte des Bar (far south) -->
+        <rect x="228" y="412" width="96" height="30" rx="2"
+              fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+
+        <!-- Reims dot + label -->
+        <circle cx="180" cy="60" r="4.5" fill="#c9a84c"/>
+        <text x="192" y="64" fill="#f0ebe3" font-size="12.5" font-family="Inter, sans-serif" font-weight="500">Reims</text>
+
+        <!-- Épernay dot + label -->
+        <circle cx="180" cy="248" r="4.5" fill="#c9a84c"/>
+        <text x="192" y="252" fill="#f0ebe3" font-size="12.5" font-family="Inter, sans-serif" font-weight="500">Épernay</text>
+
+        <!-- Sub-region labels -->
+        <!-- Montagne de Reims – centre label -->
+        <text x="180" y="150" fill="#c9a84c" font-size="10.5" font-family="Inter, sans-serif" text-anchor="middle" font-weight="500">Montagne de Reims</text>
+        <text x="180" y="165" fill="#9c8e84" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle">Pinot Noir</text>
+
+        <!-- Vallée de la Marne label -->
+        <text x="104" y="251" fill="#7a90c4" font-size="10" font-family="Inter, sans-serif" text-anchor="middle" font-weight="500">Vallée de la Marne</text>
+        <text x="104" y="263" fill="#9c8e84" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle">Pinot Meunier</text>
+
+        <!-- Côte des Blancs label + connector -->
+        <text x="276" y="285" fill="#d4cfc7" font-size="10.5" font-family="Inter, sans-serif" text-anchor="start" font-weight="500">Côte des Blancs</text>
+        <text x="276" y="299" fill="#9c8e84" font-size="9.5" font-family="Inter, sans-serif" text-anchor="start">Chardonnay</text>
+        <line x1="274" y1="289" x2="218" y2="289" stroke="rgba(255,255,255,0.12)" stroke-width="0.75" stroke-dasharray="3 3"/>
+
+        <!-- Côte de Sézanne label -->
+        <text x="276" y="372" fill="#9c8e84" font-size="9.5" font-family="Inter, sans-serif" text-anchor="start">Côte de Sézanne</text>
+        <line x1="274" y1="369" x2="218" y2="369" stroke="rgba(255,255,255,0.12)" stroke-width="0.75" stroke-dasharray="3 3"/>
+
+        <!-- Aube label -->
+        <text x="276" y="425" fill="#c9a84c" font-size="10.5" font-family="Inter, sans-serif" text-anchor="start" font-weight="500">Aube</text>
+        <text x="276" y="438" fill="#9c8e84" font-size="9.5" font-family="Inter, sans-serif" text-anchor="start">Pinot Noir</text>
+
+        <!-- ~100km note -->
+        <text x="180" y="402" fill="#5c504a" font-size="9" font-family="Inter, sans-serif" text-anchor="middle">≈ 100 km south</text>
+
+        <!-- North indicator -->
+        <text x="332" y="32" fill="#5c504a" font-size="11" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600">N</text>
+        <polygon points="332,36 329,48 332,45 335,48" fill="#5c504a"/>
+        <line x1="332" y1="48" x2="332" y2="56" stroke="#5c504a" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- Scale bar -->
+        <line x1="30" y1="445" x2="100" y2="445" stroke="#3a2e2b" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="30" y1="440" x2="30" y2="450" stroke="#3a2e2b" stroke-width="1"/>
+        <line x1="100" y1="440" x2="100" y2="450" stroke="#3a2e2b" stroke-width="1"/>
+        <text x="65" y="440" fill="#5c504a" font-size="8.5" font-family="Inter, sans-serif" text-anchor="middle">50 km</text>
+      </svg>
+    </div>
+
+    <!-- Sub-region cards -->
+    <div class="cards-grid cards-grid-2" style="margin-top: 1.5rem;">
+      <div class="info-card">
+        <p class="info-card-meta">Pinot Noir</p>
+        <h3 class="info-card-title">Montagne de Reims</h3>
+        <p>A forested plateau south of Reims. South- and east-facing slopes concentrate the best Pinot Noir plantings. Grand Cru villages include Ambonnay, Bouzy, Verzenay, and Mailly.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Pinot Meunier</p>
+        <h3 class="info-card-title">Vallée de la Marne</h3>
+        <p>The Marne river valley running east–west through Épernay. Pinot Meunier dominates — its frost-resistance makes it ideal for the low-lying valley floors prone to spring frosts.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Chardonnay</p>
+        <h3 class="info-card-title">Côte des Blancs</h3>
+        <p>A chalk escarpment running south from Épernay. Almost exclusively Chardonnay. This is the source of the finest blanc de blancs. Grand Cru villages: Avize, Cramant, Le Mesnil-sur-Oger.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Pinot Noir · Chardonnay</p>
+        <h3 class="info-card-title">Aube (Côte des Bar)</h3>
+        <p>Located 100 km southeast of Épernay, near Troyes. Kimmeridgian limestone — the same soil as Chablis. Predominantly Pinot Noir. The source of many outstanding grower Champagnes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERROIR & CLIMATE -->
+  <section id="terroir" class="topic-section">
+    <h2 class="section-title">Terroir & Climate</h2>
+    <p class="section-lead">Two things define Champagne's terroir above all else: the chalk and the cold. Neither exists to the same degree anywhere else in the world of fine wine.</p>
+    <div class="section-body">
+      <p><strong style="color: var(--text-primary); font-weight: 500;">The Chalk.</strong> The subsoil of the main Champagne vineyards is belemnite chalk — a fine, porous rock laid down during the Cretaceous period, approximately 70 million years ago. It provides exceptional drainage while retaining moisture at depth. Vine roots penetrate 10–15 metres in search of water, stabilising yields and stressing the vine in productive ways. The chalk also reflects heat upward into the canopy, a critical advantage in this cold climate. The famous chalk cellars beneath Reims and Épernay — the crayères — maintain a constant 10–12°C year-round, the ideal temperature for the secondary fermentation and aging.</p>
+      <p><strong style="color: var(--text-primary); font-weight: 500;">The Climate.</strong> Champagne is the coldest major wine region in France. The continental climate brings cold winters, spring frost risk, and barely sufficient summer warmth for full ripening. Average growing season temperature is approximately 10.8°C — right at the lower threshold for viticulture. Annual rainfall is around 650mm, spread evenly. This marginal viticulture is not a handicap; it is the point. Grapes ripen slowly, retaining high natural acidity — the structural backbone that gives Champagne its tension and aging capacity.</p>
+    </div>
+    <div class="fact-list">
+      <span class="fact-key">Subsoil</span>
+      <span class="fact-val">Belemnite chalk (Cretaceous, ~70 million years old)</span>
+      <span class="fact-key">Topsoil</span>
+      <span class="fact-val">Clay, loam, sand — varies by sub-zone</span>
+      <span class="fact-key">Avg. temp.</span>
+      <span class="fact-val">10.8 °C (growing season)</span>
+      <span class="fact-key">Rainfall</span>
+      <span class="fact-val">~650 mm per year</span>
+      <span class="fact-key">Latitude</span>
+      <span class="fact-val">49°N — northern limit of viticulture</span>
+      <span class="fact-key">Frost risk</span>
+      <span class="fact-val">Significant in spring; valley floors most exposed</span>
+    </div>
+  </section>
+
+  <!-- THE GRAPES -->
+  <section id="grapes" class="topic-section">
+    <h2 class="section-title">The Grapes</h2>
+    <p class="section-lead">Three varieties account for nearly all Champagne production. Each brings something distinct; the art of blending lies in understanding how they interact.</p>
+    <div class="cards-grid cards-grid-3">
+      <div class="info-card">
+        <p class="info-card-meta">~38% of plantings</p>
+        <h3 class="info-card-title">Pinot Noir</h3>
+        <p>Adds structure, red fruit (cherry, raspberry), and body. Despite being a red grape, it is vinified as white wine — pressed quickly to avoid colour extraction. The backbone of most prestige cuvées and the dominant variety on the Montagne de Reims.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">~31% of plantings</p>
+        <h3 class="info-card-title">Chardonnay</h3>
+        <p>Provides elegance, citrus, white flower, and the mineral quality associated with Champagne's chalk. It is the sole variety in Blanc de Blancs. Dominant in the Côte des Blancs, where it achieves its finest expression. Ages exceptionally well.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">~31% of plantings</p>
+        <h3 class="info-card-title">Pinot Meunier</h3>
+        <p>Earlier-ripening and frost-resistant. Brings immediate fruit and roundness — the most accessible of the three varieties when young. Long underrated by the grandes maisons, it is now celebrated by grower producers as a variety capable of serious complexity.</p>
+      </div>
+    </div>
+    <div class="section-body" style="margin-top: 1.25rem;">
+      <p>Four additional varieties are permitted but rarely encountered: Pinot Blanc, Pinot Gris, Arbane, and Petit Meslier. They are preserved mainly by small growers interested in historical diversity.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTION METHOD -->
+  <section id="production" class="topic-section">
+    <h2 class="section-title">Production Method</h2>
+    <p class="section-lead">The traditional method (méthode champenoise) is the most labour-intensive wine production process in the world. Every bottle of Champagne undergoes a second fermentation in the same bottle in which it is sold.</p>
+    <ol class="production-steps">
+      <li class="prod-step">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <h4 class="step-title">Harvest</h4>
+          <p class="step-desc">Hand-picked in September–October. Whole clusters are essential — mechanical harvesting would damage the skins and release colour into the juice. Speed is critical to preserve freshness.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <h4 class="step-title">Pressing</h4>
+          <p class="step-desc">Whole-cluster pressing is legally required. The first 2,050 litres from each 4,000 kg of grapes (the cuvée) is the finest quality. The next 500 litres (the taille) is coarser. Prestige cuvées use cuvée only.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <h4 class="step-title">First Fermentation</h4>
+          <p class="step-desc">In stainless steel tanks (or oak barrels for traditional houses such as Bollinger and Krug). Converts sugar to alcohol over 2–3 weeks. The resulting base wine is high-acid, low-alcohol, and often unpleasant on its own.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">04</span>
+        <div class="step-body">
+          <h4 class="step-title">Malolactic Fermentation</h4>
+          <p class="step-desc">Optional. Converts sharp malic acid to softer lactic acid. Most non-vintage Champagnes undergo full MLF for consistency and roundness. Some producers block it entirely to preserve tension and freshness — notably Salon and Jacquesson.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">05</span>
+        <div class="step-body">
+          <h4 class="step-title">Assemblage (Blending)</h4>
+          <p class="step-desc">The most intellectually demanding step. The chef de cave blends across grape varieties, villages, and — crucially — vintages, using reserve wines held back from previous years. A single NV cuvée may draw on wines from 50–60 different sources and up to 10 vintages. This is what creates the house style.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">06</span>
+        <div class="step-body">
+          <h4 class="step-title">Tirage</h4>
+          <p class="step-desc">The blended wine is bottled with a small addition of yeast and sugar (liqueur de tirage). The bottle is sealed with a crown cap. This triggers the second fermentation.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">07</span>
+        <div class="step-body">
+          <h4 class="step-title">Second Fermentation in Bottle</h4>
+          <p class="step-desc">The yeast consumes the added sugar, producing alcohol and CO₂. Because the bottle is sealed, the gas dissolves into the wine — creating the bubbles. This takes 6–8 weeks in the cellar.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">08</span>
+        <div class="step-body">
+          <h4 class="step-title">Aging on Lees</h4>
+          <p class="step-desc">The dead yeast cells (lees) remain in contact with the wine. As they break down (autolysis), they release compounds that give Champagne its characteristic brioche, toast, and biscuit notes. Minimum 15 months for NV; 36 months for vintage. The finest houses age far longer — Dom Pérignon holds its wine for a minimum of 7–8 years.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">09</span>
+        <div class="step-body">
+          <h4 class="step-title">Riddling (Remuage)</h4>
+          <p class="step-desc">The bottle is gradually tilted and rotated — traditionally by hand on a wooden rack (pupitre), now usually by gyropalette — to collect the lees sediment in the neck. The process takes 3–4 weeks by machine, up to 8 weeks by hand.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">10</span>
+        <div class="step-body">
+          <h4 class="step-title">Disgorgement</h4>
+          <p class="step-desc">The neck of the bottle is frozen in a brine solution. The crown cap is removed; the pressure expels the frozen plug of sediment. The wine is crystal clear.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">11</span>
+        <div class="step-body">
+          <h4 class="step-title">Dosage</h4>
+          <p class="step-desc">The small volume lost at disgorgement is replaced with the liqueur d'expédition — a mixture of wine and cane sugar. The amount added determines the final sweetness level. Brut (the most common) receives less than 12 g/L. Zero dosage receives none.</p>
+        </div>
+      </li>
+      <li class="prod-step">
+        <span class="step-num">12</span>
+        <div class="step-body">
+          <h4 class="step-title">Corking & Release</h4>
+          <p class="step-desc">The Champagne cork is inserted (it starts as a straight cylinder and is compressed to the mushroom shape by the neck), the wire cage (muselet) is applied, and the bottle rests briefly before release. The disgorgement date is sometimes printed on the label — useful for assessing freshness on purchase.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- STYLES -->
+  <section id="styles" class="topic-section">
+    <h2 class="section-title">Styles</h2>
+    <p class="section-lead">Six distinct styles exist within the Champagne appellation. Understanding them allows you to choose the right wine for the right moment.</p>
+    <div class="cards-grid cards-grid-2">
+      <div class="info-card">
+        <p class="info-card-meta">~80% of all production</p>
+        <h3 class="info-card-title">Non-Vintage (NV) Brut</h3>
+        <p>The house flagship. Blended across multiple vintages using reserve wines to achieve a consistent style year after year. The quality and character of the NV is the truest expression of a house's philosophy. Most accessible, best value.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Best years only</p>
+        <h3 class="info-card-title">Vintage</h3>
+        <p>Produced only in exceptional years from a single harvest. Greater complexity and aging potential than NV. Minimum 36 months aging. Declared in approximately 3–4 years per decade. Designed to evolve over 10–20+ years in bottle.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">100% Chardonnay</p>
+        <h3 class="info-card-title">Blanc de Blancs</h3>
+        <p>Made exclusively from Chardonnay. Lighter in body, higher in acidity, with a citrus, chalk, and white flower character. The finest come from Le Mesnil-sur-Oger and Avize in the Côte des Blancs. The style most suited to aging.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Red grapes only</p>
+        <h3 class="info-card-title">Blanc de Noirs</h3>
+        <p>From Pinot Noir and/or Pinot Meunier, vinified as a white wine. Fuller body, richer texture, and red fruit character. Relatively rare from the grandes maisons; more common among grower producers in the Aube and Montagne de Reims.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Pink Champagne</p>
+        <h3 class="info-card-title">Rosé</h3>
+        <p>Produced by one of two methods: saignée (brief skin contact with red grapes) or the more common assemblage method (adding a small amount of still red Pinot Noir wine to the white blend). Richer and more vinous than NV Brut. Laurent-Perrier Cuvée Rosé is the benchmark at scale.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">House pinnacle</p>
+        <h3 class="info-card-title">Prestige Cuvée</h3>
+        <p>The finest expression of each house — usually vintage-dated, from the best-situated parcels, with extended aging. Examples: Dom Pérignon, Cristal, Krug Grande Cuvée, Bollinger R.D., Pol Roger Cuvée Sir Winston Churchill. These are wines designed for the cellar as much as the table.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- READING THE LABEL -->
+  <section id="label" class="topic-section">
+    <h2 class="section-title">Reading the Label</h2>
+    <p class="section-lead">A Champagne label contains more information than most wines, if you know where to look. Two things matter most: the dosage level and the producer status code.</p>
+
+    <h3 class="subsection-title">Dosage Levels</h3>
+    <p class="section-body" style="font-size:0.875rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; max-width: 680px; margin-bottom: 1rem;">
+      The dosage is the final addition of sugar before corking. It defines the sweetness level. Note that "Extra Dry" is sweeter than "Brut" — counterintuitive but historically entrenched.
+    </p>
+    <div class="dosage-scale">
+      <div class="dosage-bar"></div>
+      <div class="dosage-labels">
+        <div class="dosage-item">
+          <span class="dosage-name">Brut Nature</span>
+          <span class="dosage-range">0–3 g/L</span>
+          <span class="dosage-note">Bone dry. No added sugar.</span>
+        </div>
+        <div class="dosage-item">
+          <span class="dosage-name">Extra Brut</span>
+          <span class="dosage-range">0–6 g/L</span>
+          <span class="dosage-note">Very dry. Increasingly popular.</span>
+        </div>
+        <div class="dosage-item dosage-highlight">
+          <span class="dosage-name">Brut</span>
+          <span class="dosage-range">&lt;12 g/L</span>
+          <span class="dosage-note">The standard. ~85% of all Champagne.</span>
+        </div>
+        <div class="dosage-item">
+          <span class="dosage-name">Extra Dry</span>
+          <span class="dosage-range">12–17 g/L</span>
+          <span class="dosage-note">Off-dry. More common in export markets.</span>
+        </div>
+        <div class="dosage-item">
+          <span class="dosage-name">Sec</span>
+          <span class="dosage-range">17–32 g/L</span>
+          <span class="dosage-note">Noticeably sweet.</span>
+        </div>
+        <div class="dosage-item">
+          <span class="dosage-name">Demi-Sec</span>
+          <span class="dosage-range">32–50 g/L</span>
+          <span class="dosage-note">Sweet. Good with fruit desserts.</span>
+        </div>
+        <div class="dosage-item">
+          <span class="dosage-name">Doux</span>
+          <span class="dosage-range">&gt;50 g/L</span>
+          <span class="dosage-note">Very sweet. Rare today.</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" style="margin-top: 2rem;">Producer Status Codes</h3>
+    <p class="section-body" style="font-size:0.875rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; max-width: 680px; margin-bottom: 1rem;">
+      A two-letter code printed in small type on every Champagne label identifies who made it and how. This is one of the most useful pieces of information for judging value and style.
+    </p>
+    <div class="fact-list">
+      <span class="fact-key">NM</span>
+      <span class="fact-val"><strong style="color: var(--text-primary); font-weight:500;">Négociant-Manipulant.</strong> A house that buys grapes from growers, then vinifies and ages the wine. Most grandes marques: Moët, Bollinger, Krug, Veuve Clicquot.</span>
+      <span class="fact-key">RM</span>
+      <span class="fact-val"><strong style="color: var(--text-primary); font-weight:500;">Récoltant-Manipulant.</strong> A grower who makes wine entirely from their own vineyards. Smaller production; often more terroir-specific and distinctive. This is "grower Champagne."</span>
+      <span class="fact-key">CM</span>
+      <span class="fact-val"><strong style="color: var(--text-primary); font-weight:500;">Coopérative de Manipulation.</strong> A co-operative. Often good value at entry level. Nicolas Feuillatte is the largest.</span>
+      <span class="fact-key">RC</span>
+      <span class="fact-val"><strong style="color: var(--text-primary); font-weight:500;">Récoltant-Coopérateur.</strong> A grower who grows their own grapes but uses a co-operative to vinify the wine. A middle ground.</span>
+    </div>
+  </section>
+
+  <!-- NOTABLE PRODUCERS -->
+  <section id="producers" class="topic-section">
+    <h2 class="section-title">Notable Producers</h2>
+    <p class="section-lead">The grandes marques set the commercial standard. Grower producers offer a different argument — that a single village or even a single vineyard can say something that no blend can replicate.</p>
+
+    <h3 class="subsection-title">Grande Marques (The Houses)</h3>
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 2rem;">
+      <div class="info-card">
+        <h3 class="info-card-title">Bollinger</h3>
+        <p>Traditional and Pinot Noir-driven. Reserve wines fermented in small oak barrels — rare among Champagne houses. Special Cuvée NV is one of the most consistent in the category. R.D. (Recently Disgorged) is the prestige cuvée, released late with extended aging.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Krug</h3>
+        <p>The house of maximum complexity. Their Grande Cuvée (technically an NV) blends up to 250 reserve wines from more than 10 different years. Fermented in small oak barrels. Not the most approachable when young; among the finest Champagnes with age.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Louis Roederer</h3>
+        <p>One of the few grande maison to own the majority of its own vineyards (60%). This gives unusual consistency. Cristal — created in 1876 for Tsar Alexander II, served in a clear bottle at his request — remains one of the most recognisable prestige cuvées.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Pol Roger</h3>
+        <p>Winston Churchill's house. Classically structured, refined, and built for aging. Cuvée Sir Winston Churchill is the prestige expression — Pinot Noir-dominant and impeccably age-worthy. Among the most intellectually satisfying of the grandes marques.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Taittinger</h3>
+        <p>A Chardonnay-led style — floral, elegant, and comparatively light. Comtes de Champagne Blanc de Blancs is one of the finest prestige cuvées in the region. Family-owned, which is increasingly rare among the grandes marques.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Veuve Clicquot</h3>
+        <p>The Yellow Label. Full-bodied, reliable, and consistent. Madame Clicquot herself invented the riddling table (pupitre) in 1816 — a pivotal technical development in Champagne's history. La Grande Dame is the prestige cuvée.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Laurent-Perrier</h3>
+        <p>A Champagne house that has done more than most to define Rosé as a serious category. Their Cuvée Rosé is a benchmark. Grand Siècle — a blend of the three finest recent vintages — is an original and compelling approach to prestige non-vintage Champagne.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Ruinart</h3>
+        <p>The oldest Champagne house (established 1729). Focused on Chardonnay. Their Blanc de Blancs is widely regarded as the entry-level benchmark for that style. Dom Ruinart is the prestige cuvée. Recent packaging in recycled paper sleeves has been widely praised.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Prestige Cuvées Worth Knowing</h3>
+    <div class="fact-list" style="margin-bottom: 2rem;">
+      <span class="fact-key">Dom Pérignon</span>
+      <span class="fact-val">Moët & Chandon. The most famous Champagne in the world. Vintage-only. Rich, vinous, complex. Released in three "plénitudes" (P1, P2, P3) at increasing ages.</span>
+      <span class="fact-key">Cristal</span>
+      <span class="fact-val">Louis Roederer. Pale gold, elegant, precise. Pinot Noir and Chardonnay from estate-owned Grand Cru vineyards. Clear bottle, no foil wrapping.</span>
+      <span class="fact-key">Bollinger R.D.</span>
+      <span class="fact-val">"Recently Disgorged." Same wine as Grande Année but held on the lees far longer before disgorgement. Deep, toasty, commanding — designed for the cellar.</span>
+      <span class="fact-key">Krug Grande Cuvée</span>
+      <span class="fact-val">Technically NV, but treated as a prestige release. Each edition is numbered. Profound complexity; one of the most cellar-worthy Champagnes produced.</span>
+    </div>
+
+    <h3 class="subsection-title">Grower Producers (Récoltants)</h3>
+    <div class="cards-grid cards-grid-2">
+      <div class="info-card">
+        <h3 class="info-card-title">Jacques Selosse</h3>
+        <p>The most influential grower producer in Champagne. Anselme Selosse's oxidative, terroir-driven, oak-aged Blanc de Blancs challenged the entire Champagne orthodoxy. Controversial, sought-after, and genuinely important.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Egly-Ouriet</h3>
+        <p>Based in Ambonnay on the Montagne de Reims. Powerful, complex Pinot Noir-led wines with impressive aging potential. Among the most serious and consistent grower producers.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Pierre Péters</h3>
+        <p>Le Mesnil-sur-Oger, Côte des Blancs. Among the finest Blanc de Blancs producers in Champagne. Les Chétillons is the flagship single-vineyard wine — tense, mineral, and built to age.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Bereche & Fils</h3>
+        <p>Based in Ludes, near Reims. Thoughtful, age-worthy wines across multiple terroir-specific cuvées. One of the most intellectually rigorous grower producers — excellent entry point into serious grower Champagne.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE GUIDE -->
+  <section id="price" class="topic-section">
+    <h2 class="section-title">Price Guide</h2>
+    <p class="section-lead">Champagne pricing reflects both production cost (the method is expensive) and brand positioning. There is genuine quality at every level.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <div class="price-range">€30–55</div>
+        <div class="price-body">
+          <h4 class="price-label">Entry-Level NV Brut</h4>
+          <p class="price-desc">Moët & Chandon Brut Impérial, Veuve Clicquot Yellow Label, Nicolas Feuillatte. Consistent, commercial, accessible. Good for large gatherings.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€55–90</div>
+        <div class="price-body">
+          <h4 class="price-label">Quality NV Brut</h4>
+          <p class="price-desc">Bollinger Special Cuvée, Pol Roger White Foil, Taittinger Brut Réserve, Louis Roederer Collection. Noticeably more complex than the entry tier. The right level for a serious wine club.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€60–130</div>
+        <div class="price-body">
+          <h4 class="price-label">Grower Champagne</h4>
+          <p class="price-desc">Bereche & Fils, Egly-Ouriet, Pierre Péters, Ulysse Collin. Often more distinctive and terroir-expressive than grandes marques at the same price. Worth exploring.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€80–160</div>
+        <div class="price-body">
+          <h4 class="price-label">Vintage Champagne</h4>
+          <p class="price-desc">Most grandes marques' single-vintage releases. More complexity, declared only in the best years. Look for 2012, 2013, 2015, 2018 — all exceptional recent vintages.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€150–350</div>
+        <div class="price-body">
+          <h4 class="price-label">Prestige Cuvées</h4>
+          <p class="price-desc">Dom Pérignon (~€220), Cristal (~€270), Krug Grande Cuvée (~€200), Bollinger R.D. (~€200), Comtes de Champagne (~€180). Wines of genuine exceptional quality and aging potential.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€350+</div>
+        <div class="price-body">
+          <h4 class="price-label">Ultra-Prestige</h4>
+          <p class="price-desc">Krug Clos du Mesnil (single-vineyard Blanc de Blancs, ~€700), Salon Le Mesnil (~€500), Jacques Selosse Substance (~€350). For the serious collector or a once-in-a-decade occasion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD PAIRING -->
+  <section id="pairing" class="topic-section">
+    <h2 class="section-title">Food Pairing</h2>
+    <p class="section-lead">Champagne's high acidity, effervescence, and relatively low alcohol make it one of the most food-versatile wines in the world. The bubbles lift fat; the acid cuts richness.</p>
+    <div class="pairing-grid">
+      <div class="pairing-row">
+        <span class="pairing-wine">Brut NV</span>
+        <span class="pairing-foods">Oysters, raw seafood, sushi, tempura, fried chicken, potato crisps, salted butter. The classic combination: acidity and effervescence versus salt and fat.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Blanc de Blancs</span>
+        <span class="pairing-foods">Caviar, crab, langoustine, ceviche, goat cheese, delicate white fish. The mineral tension of great Blanc de Blancs is one of the finest pairings in gastronomy.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Blanc de Noirs</span>
+        <span class="pairing-foods">Charcuterie, smoked salmon, poultry terrines, roast chicken, light pasta with cream sauce.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Rosé</span>
+        <span class="pairing-foods">Duck breast, strawberries with cream, salmon en croûte, tuna tartare, beetroot-based dishes.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Vintage / Prestige</span>
+        <span class="pairing-foods">Lobster, roast turbot, truffle dishes, aged Comté or Gruyère cheese, roast squab. These wines are complex enough to handle richness.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Demi-Sec</span>
+        <span class="pairing-foods">Fruit tarts, poached pears, mild blue cheese, crème brûlée. Avoid heavy chocolate desserts — they overwhelm the wine.</span>
+      </div>
+    </div>
+  </section>
+
+</TopicLayout>
+
+<style>
+  /* Map */
+  .map-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .region-map {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+  }
+
+  /* Production steps */
+  .production-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1.25rem;
+  }
+
+  .prod-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .prod-step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--accent);
+    opacity: 0.6;
+    font-weight: 400;
+    flex-shrink: 0;
+    width: 2rem;
+    padding-top: 0.1rem;
+  }
+
+  .step-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.375rem;
+    letter-spacing: 0.01em;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 620px;
+  }
+
+  /* Dosage scale */
+  .dosage-scale {
+    margin-top: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .dosage-bar {
+    height: 4px;
+    background: linear-gradient(to right, #3a8a6a, #8ab87a, #c9a84c, #c97a4c, #a04030, #701828, #400010);
+  }
+
+  .dosage-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .dosage-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.875rem 0.75rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .dosage-item:last-child { border-right: none; }
+  .dosage-highlight { background: rgba(201,168,76,0.05); }
+
+  .dosage-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .dosage-range {
+    font-size: 0.6875rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .dosage-note {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 0.125rem;
+  }
+
+  /* Price tiers */
+  .price-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .price-tier {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.125rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .price-tier:last-child { border-bottom: none; }
+
+  .price-range {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 6.5rem;
+    padding-top: 0.1rem;
+  }
+
+  .price-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-desc {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Food pairing */
+  .pairing-grid {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .pairing-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .pairing-row:last-child { border-bottom: none; }
+
+  .pairing-wine {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+
+  .pairing-foods {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Subsection headings */
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .dosage-labels { grid-template-columns: repeat(4, 1fr); }
+    .dosage-item:nth-child(n+5) { display: none; }
+    .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .price-range { width: 5.5rem; }
+    .prod-step { gap: 1rem; }
+  }
+</style>
