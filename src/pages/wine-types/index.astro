@@ -1,0 +1,33 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { wineTypeGroups } from '../../data/wine-types';
+const base = import.meta.env.BASE_URL;
+---
+<CategoryLayout
+  title="Wine Types"
+  description="These are the world's great named wines — each with a distinct identity, production method, and language. Understanding them is how you navigate any wine list with confidence."
+  count="26 wines"
+>
+  {wineTypeGroups.map(group => (
+    <div class="entry-group">
+      <p class="group-label">{group.label}</p>
+      <div class="entry-grid">
+        {group.entries.map(entry => (
+          entry.status === 'available'
+            ? (
+              <a href={`${base}wine-types/${entry.slug}/`} class="entry-card available">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.region}</p>
+                <span class="entry-badge">Available</span>
+              </a>
+            ) : (
+              <div class="entry-card coming-soon">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.region}</p>
+              </div>
+            )
+        ))}
+      </div>
+    </div>
+  ))}
+</CategoryLayout>

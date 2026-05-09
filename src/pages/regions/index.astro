@@ -1,0 +1,33 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { regionGroups } from '../../data/regions';
+const base = import.meta.env.BASE_URL;
+---
+<CategoryLayout
+  title="Regions"
+  description="Wine is inseparable from place. Soil composition, altitude, rainfall, and microclimate all leave their mark on the finished wine. These are the regions that define the world's vinous map."
+  count="30 regions"
+>
+  {regionGroups.map(group => (
+    <div class="entry-group">
+      <p class="group-label">{group.label}</p>
+      <div class="entry-grid">
+        {group.entries.map(entry => (
+          entry.status === 'available'
+            ? (
+              <a href={`${base}regions/${entry.slug}/`} class="entry-card available">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.country}</p>
+                <span class="entry-badge">Available</span>
+              </a>
+            ) : (
+              <div class="entry-card coming-soon">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.country}</p>
+              </div>
+            )
+        ))}
+      </div>
+    </div>
+  ))}
+</CategoryLayout>

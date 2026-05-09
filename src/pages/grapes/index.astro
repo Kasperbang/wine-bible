@@ -1,0 +1,33 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { grapeGroups } from '../../data/grapes';
+const base = import.meta.env.BASE_URL;
+---
+<CategoryLayout
+  title="Grapes"
+  description="Every wine begins with a grape. Understanding a variety — its skin thickness, acidity, tannin, and aromatic profile — is the fastest way to decode any wine in your glass."
+  count="35 varieties"
+>
+  {grapeGroups.map(group => (
+    <div class="entry-group">
+      <p class="group-label">{group.label}</p>
+      <div class="entry-grid">
+        {group.entries.map(entry => (
+          entry.status === 'available'
+            ? (
+              <a href={`${base}grapes/${entry.slug}/`} class="entry-card available">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.origin}</p>
+                <span class="entry-badge">Available</span>
+              </a>
+            ) : (
+              <div class="entry-card coming-soon">
+                <p class="entry-name">{entry.name}</p>
+                <p class="entry-meta">{entry.origin}</p>
+              </div>
+            )
+        ))}
+      </div>
+    </div>
+  ))}
+</CategoryLayout>

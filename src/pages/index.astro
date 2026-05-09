@@ -1,17 +1,209 @@
 ---
-
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
 ---
+<Base title="The Wine Bible">
+  <main class="home">
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <header class="home-header">
+      <div class="wordmark">The Wine Bible</div>
+      <p class="tagline">A serious guide to understanding wine</p>
+    </header>
+
+    <nav class="category-grid">
+
+      <a href={`${base}grapes/`} class="category-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="10" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="15" cy="19" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="33" cy="19" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="24" cy="19" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="19.5" cy="28" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="28.5" cy="28" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="24" cy="37" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="24" y1="5" x2="24" y2="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Grapes</h2>
+          <p class="card-subtitle">35 varieties</p>
+          <p class="card-description">The foundation of every wine. Understand the character, origins, and signature traits of the world's most important grape varieties.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href={`${base}regions/`} class="category-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="20" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="24" cy="20" r="2.5" fill="currentColor"/>
+            <path d="M24 29 C20 33 14 38 14 44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M24 29 C28 33 34 38 34 44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <line x1="14" y1="44" x2="34" y2="44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Regions</h2>
+          <p class="card-subtitle">30 regions</p>
+          <p class="card-description">Geography shapes everything. Explore the world's great wine regions — their terroir, climate, and the wines they produce.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href={`${base}wine-types/`} class="category-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 6 L32 6 L30 24 C30 30 26 34 24 34 C22 34 18 30 18 24 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <line x1="24" y1="34" x2="24" y2="42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="17" y1="42" x2="31" y2="42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="17" y1="16" x2="31" y2="16" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 3"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Wine Types</h2>
+          <p class="card-subtitle">26 wines</p>
+          <p class="card-description">From Champagne to Barolo. Study the world's great named wines — their identity, production, styles, and what to look for in the glass.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </nav>
+
+    <footer class="home-footer">
+      <p>A living document — new chapters added regularly</p>
+    </footer>
+
+  </main>
+</Base>
+
+<style>
+  .home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    gap: 4rem;
+  }
+
+  .home-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .wordmark {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+
+  .tagline {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .category-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--accent);
+  }
+
+  .card-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .card-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .card-arrow {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    align-self: flex-end;
+  }
+
+  .category-card:hover .card-arrow {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  .home-footer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 700px) {
+    .home { gap: 2.5rem; padding: 2rem 1rem; justify-content: flex-start; padding-top: 3rem; }
+    .category-grid { grid-template-columns: 1fr; gap: 0.875rem; }
+    .category-card { flex-direction: row; align-items: flex-start; padding: 1.5rem; gap: 1.25rem; }
+    .card-icon { width: 2rem; height: 2rem; flex-shrink: 0; margin-top: 0.25rem; }
+    .card-arrow { display: none; }
+  }
+</style>
