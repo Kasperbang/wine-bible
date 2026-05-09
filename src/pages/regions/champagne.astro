@@ -37,8 +37,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
       Champagne is the world's most celebrated sparkling wine, produced exclusively in the northernmost wine region of France. Its quality rests on three pillars: a unique chalk subsoil, a cool marginal climate that preserves natural acidity, and centuries of blending expertise that has no parallel anywhere else in the wine world.
     </p>
     <div class="section-body">
-      <p>Unlike most fine wines, which celebrate a single vineyard and a single vintage, the majority of Champagne is non-vintage — a deliberate act of blending across grape varieties, villages, and years. The objective is consistency and house style, not the expression of one place or one harvest. This philosophy is what makes the chef de cave (cellar master) one of the most important figures in fine wine.</p>
-      <p>The Champagne appellation is strictly controlled. Only wines produced within the delimited zone, from permitted grape varieties, using the traditional method, may be called Champagne. Everything else — however good — is sparkling wine.</p>
+      <p>Most Champagne is non-vintage — blended across grape varieties, villages, and years to achieve a consistent house style rather than the expression of one place or harvest. This makes the chef de cave (cellar master) one of the most important figures in fine wine.</p>
+      <p>Only wines from the delimited zone, using permitted varieties and the traditional method, may be called Champagne. Everything else is sparkling wine.</p>
     </div>
   </section>
 
@@ -157,8 +157,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     <h2 class="section-title">Terroir & Climate</h2>
     <p class="section-lead">Two things define Champagne's terroir above all else: the chalk and the cold. Neither exists to the same degree anywhere else in the world of fine wine.</p>
     <div class="section-body">
-      <p><strong style="color: var(--text-primary); font-weight: 500;">The Chalk.</strong> The subsoil of the main Champagne vineyards is belemnite chalk — a fine, porous rock laid down during the Cretaceous period, approximately 70 million years ago. It provides exceptional drainage while retaining moisture at depth. Vine roots penetrate 10–15 metres in search of water, stabilising yields and stressing the vine in productive ways. The chalk also reflects heat upward into the canopy, a critical advantage in this cold climate. The famous chalk cellars beneath Reims and Épernay — the crayères — maintain a constant 10–12°C year-round, the ideal temperature for the secondary fermentation and aging.</p>
-      <p><strong style="color: var(--text-primary); font-weight: 500;">The Climate.</strong> Champagne is the coldest major wine region in France. The continental climate brings cold winters, spring frost risk, and barely sufficient summer warmth for full ripening. Average growing season temperature is approximately 10.8°C — right at the lower threshold for viticulture. Annual rainfall is around 650mm, spread evenly. This marginal viticulture is not a handicap; it is the point. Grapes ripen slowly, retaining high natural acidity — the structural backbone that gives Champagne its tension and aging capacity.</p>
+      <p><strong style="color: var(--text-primary); font-weight: 500;">The Chalk.</strong> Belemnite chalk — fine, porous, Cretaceous-era rock — provides excellent drainage while retaining moisture at depth. Vine roots penetrate 10–15 metres, stressing the vine productively. The chalk also reflects heat into the canopy, critical in this cold climate. The famous crayères cellars beneath Reims and Épernay hold a constant 10–12°C — ideal for aging.</p>
+      <p><strong style="color: var(--text-primary); font-weight: 500;">The Climate.</strong> Champagne is France's coldest major wine region. Average growing temperature is 10.8°C — at the lower limit of viticulture. Slow, cool ripening preserves high natural acidity, the backbone that gives Champagne its tension and aging potential.</p>
     </div>
     <div class="fact-list">
       <span class="fact-key">Subsoil</span>
@@ -525,32 +525,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
   <!-- FOOD PAIRING -->
   <section id="pairing" class="topic-section">
     <h2 class="section-title">Food Pairing</h2>
-    <p class="section-lead">Champagne's high acidity, effervescence, and relatively low alcohol make it one of the most food-versatile wines in the world. The bubbles lift fat; the acid cuts richness.</p>
-    <div class="pairing-grid">
-      <div class="pairing-row">
-        <span class="pairing-wine">Brut NV</span>
-        <span class="pairing-foods">Oysters, raw seafood, sushi, tempura, fried chicken, potato crisps, salted butter. The classic combination: acidity and effervescence versus salt and fat.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Blanc de Blancs</span>
-        <span class="pairing-foods">Caviar, crab, langoustine, ceviche, goat cheese, delicate white fish. The mineral tension of great Blanc de Blancs is one of the finest pairings in gastronomy.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Blanc de Noirs</span>
-        <span class="pairing-foods">Charcuterie, smoked salmon, poultry terrines, roast chicken, light pasta with cream sauce.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Rosé</span>
-        <span class="pairing-foods">Duck breast, strawberries with cream, salmon en croûte, tuna tartare, beetroot-based dishes.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Vintage / Prestige</span>
-        <span class="pairing-foods">Lobster, roast turbot, truffle dishes, aged Comté or Gruyère cheese, roast squab. These wines are complex enough to handle richness.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Demi-Sec</span>
-        <span class="pairing-foods">Fruit tarts, poached pears, mild blue cheese, crème brûlée. Avoid heavy chocolate desserts — they overwhelm the wine.</span>
-      </div>
+    <p class="section-lead">High acidity and persistent bubbles make Champagne one of the most food-versatile wines. Effervescence lifts fat; acidity cuts richness.</p>
+    <div class="section-body">
+      <p>Works well with: oysters and raw shellfish, fried and salted foods, sushi, smoked fish, soft cheeses, charcuterie, and light poultry. Sweeter styles (Sec, Demi-Sec) suit fruit-based desserts. Avoid heavy, richly-sauced dishes — they overwhelm the wine's delicacy.</p>
     </div>
   </section>
 
@@ -716,41 +693,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     font-weight: 300;
   }
 
-  /* Food pairing */
-  .pairing-grid {
-    margin-top: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .pairing-row {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    align-items: baseline;
-  }
-
-  .pairing-row:last-child { border-bottom: none; }
-
-  .pairing-wine {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: 0.01em;
-  }
-
-  .pairing-foods {
-    font-size: 0.8125rem;
-    line-height: 1.65;
-    color: var(--text-secondary);
-    font-weight: 300;
-  }
-
   /* Subsection headings */
   .subsection-title {
     font-family: var(--font-serif);
@@ -778,7 +720,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     .dosage-name { width: 6.5rem; flex-shrink: 0; }
     .dosage-range { width: 4.5rem; flex-shrink: 0; }
     .dosage-note { flex: 1; }
-    .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
     .price-range { width: 5.5rem; }
     .prod-step { gap: 1rem; }
   }

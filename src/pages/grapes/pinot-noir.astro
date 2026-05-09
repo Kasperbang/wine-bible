@@ -37,8 +37,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
       Pinot Noir is the most demanding and temperamental of the world's great red grape varieties. Its thin skin makes it vulnerable to rot, disease, and climate extremes. Its low tannin and high acidity leave nowhere to hide — every flaw in vineyard or cellar shows plainly in the glass. Yet in the right place, with the right producer, it produces wines of extraordinary complexity: silk-textured, fragrant, and capable of evolving over decades.
     </p>
     <div class="section-body">
-      <p>It is the grape that made Burgundy's Côte d'Or one of the most contested and expensive pieces of agricultural land on earth. A Grand Cru vine from Romanée-Conti or Chambertin may produce just a few hundred bottles per year, each from a plot no larger than a garden. The argument that a single small parcel of land can produce something irreplaceable and unrepeatable — this is what Pinot Noir proved to the wine world.</p>
-      <p>Winemakers around the world have spent the past fifty years trying to replicate what Burgundy does with this grape. Oregon, New Zealand's Central Otago, and California's Sonoma Coast have produced remarkable results. None have fully succeeded. The combination of Burgundy's ancient chalk and limestone soils, its marginal climate, and its centuries of viticultural knowledge remains, for now, irreducible.</p>
+      <p>Pinot Noir made Burgundy's Côte d'Or the most contested and expensive agricultural land in the world. A Grand Cru plot no larger than a garden may yield just a few hundred bottles per year — the argument that a specific parcel can produce something irreplaceable.</p>
+      <p>Oregon, New Zealand's Central Otago, and California's Sonoma Coast have produced serious results. None have fully replicated what Burgundy does — its combination of ancient limestone soils, marginal climate, and centuries of accumulated knowledge remains unmatched.</p>
     </div>
   </section>
 
@@ -461,28 +461,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
   <!-- FOOD PAIRING -->
   <section id="pairing" class="topic-section">
     <h2 class="section-title">Food Pairing</h2>
-    <p class="section-lead">Pinot Noir's delicacy, acidity, and earthiness make it one of the most food-versatile red wines. It bridges red meat and fish in a way that heavier reds cannot.</p>
-    <div class="pairing-grid">
-      <div class="pairing-row">
-        <span class="pairing-wine">Village / Regional</span>
-        <span class="pairing-foods">Roast chicken, mushroom risotto, grilled salmon, light charcuterie, quiche, mild soft cheeses. The wine's fruit and acidity work equally well with poultry and fish.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Premier Cru</span>
-        <span class="pairing-foods">Duck confit, roast pigeon, rabbit with mustard, wild mushroom dishes (porcini, chanterelle, truffle), aged Comté, Époisses (classic Burgundian pairing). The savory depth matches the wine's complexity.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Grand Cru</span>
-        <span class="pairing-foods">Roast grouse or pheasant (the classic English pairing for mature red Burgundy), venison, beef fillet with minimal sauce. Age the wine — Grand Cru needs at least 8–10 years before it begins to reveal itself fully.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Oregon / NZ</span>
-        <span class="pairing-foods">Salmon, tuna, duck breast, pork tenderloin, earthy vegetable dishes. New World Pinot tends to be more fruit-forward and works slightly better with richer preparations than young Burgundy.</span>
-      </div>
-      <div class="pairing-row">
-        <span class="pairing-wine">Avoid</span>
-        <span class="pairing-foods">Heavy red meat sauces, powerful spice, very fatty dishes, and robust cheeses (strong blue cheese overwhelms the delicacy of the wine). Pinot Noir's structure cannot compete with assertive flavours.</span>
-      </div>
+    <p class="section-lead">Low tannin and high acidity make Pinot Noir one of the most flexible red wines at the table — it bridges poultry, fish, and light game in a way heavier reds cannot.</p>
+    <div class="section-body">
+      <p>Works well with: duck, roast chicken, grilled salmon, mushroom dishes (porcini, chanterelle, truffle), rabbit, light game (pigeon, pheasant), and aged soft cheeses. Avoid heavy red meat sauces, powerful spices, and robust blue cheeses — the wine's structure cannot compete with assertive flavours.</p>
     </div>
   </section>
 
@@ -650,39 +631,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     font-weight: 300;
   }
 
-  .pairing-grid {
-    margin-top: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .pairing-row {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    align-items: baseline;
-  }
-
-  .pairing-row:last-child { border-bottom: none; }
-
-  .pairing-wine {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .pairing-foods {
-    font-size: 0.8125rem;
-    line-height: 1.65;
-    color: var(--text-secondary);
-    font-weight: 300;
-  }
-
   .subsection-title {
     font-family: var(--font-serif);
     font-size: 1.1875rem;
@@ -694,7 +642,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
   @media (max-width: 700px) {
     .flavour-grid { grid-template-columns: 1fr; }
-    .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
     .price-range { width: 5.5rem; font-size: 0.875rem; }
     .tier-desc { max-width: 100%; }
   }
