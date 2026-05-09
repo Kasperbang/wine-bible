@@ -1,13 +1,119 @@
 ---
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
 import { regionGroups } from '../../data/regions';
+import { wineWorldData } from '../../data/wine-world';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const mapDataJSON = JSON.stringify(wineWorldData);
 ---
 <CategoryLayout
   title="Regions"
   description="Wine is inseparable from place. Soil composition, altitude, rainfall, and microclimate all leave their mark on the finished wine. These are the regions that define the world's vinous map."
   count="30 regions"
 >
+  <div class="world-map-section">
+    <h2 class="map-heading">Interactive Wine Map</h2>
+    <p class="map-subhead">Click a wine zone to explore regions and sub-zones.</p>
+    <div class="map-container">
+      <svg id="wine-map" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" aria-label="World wine map">
+        <!-- Continental outlines (simplified) -->
+        <!-- Europe -->
+        <path class="continent" d="M420,60 L480,55 L520,65 L540,80 L530,100 L510,115 L490,120 L470,130 L450,135 L435,125 L420,110 L415,90 Z" />
+        <!-- British Isles -->
+        <path class="continent" d="M425,65 L435,60 L440,68 L432,75 L425,72 Z" />
+        <!-- Scandinavia -->
+        <path class="continent" d="M468,45 L482,38 L490,50 L480,62 L468,58 Z" />
+        <!-- Iberian Peninsula -->
+        <path class="continent" d="M420,110 L445,108 L450,120 L448,138 L432,142 L418,130 L415,118 Z" />
+        <!-- North Africa -->
+        <path class="continent" d="M415,145 L520,140 L540,155 L530,170 L510,175 L460,172 L430,165 L415,155 Z" />
+        <!-- Sub-Saharan Africa -->
+        <path class="continent" d="M450,175 L520,170 L540,190 L550,220 L545,260 L530,290 L510,305 L490,300 L470,280 L455,250 L445,215 L442,190 Z" />
+        <!-- Middle East & Central Asia -->
+        <path class="continent" d="M540,80 L620,75 L660,85 L670,105 L650,120 L620,125 L590,118 L560,115 L540,100 Z" />
+        <!-- South Asia -->
+        <path class="continent" d="M620,100 L680,95 L710,110 L715,135 L700,150 L680,155 L650,145 L630,130 L618,115 Z" />
+        <!-- East Asia -->
+        <path class="continent" d="M680,60 L770,55 L810,70 L820,100 L810,120 L790,130 L760,125 L730,115 L700,100 L680,80 Z" />
+        <!-- Southeast Asia -->
+        <path class="continent" d="M720,130 L790,125 L820,140 L825,160 L810,170 L785,165 L755,155 L730,145 Z" />
+        <!-- Japan/Korea islands -->
+        <path class="continent" d="M800,80 L820,75 L830,88 L820,96 L805,92 Z" />
+        <!-- North America -->
+        <path class="continent" d="M100,50 L220,45 L260,60 L270,90 L255,115 L230,130 L200,135 L170,130 L145,120 L120,110 L100,95 L88,75 Z" />
+        <!-- Mexico / Central America -->
+        <path class="continent" d="M145,130 L230,125 L255,140 L250,160 L235,170 L200,165 L170,155 L150,145 Z" />
+        <!-- Caribbean -->
+        <path class="continent" d="M230,145 L265,140 L275,150 L265,158 L240,155 Z" />
+        <!-- South America -->
+        <path class="continent" d="M220,170 L295,165 L320,185 L330,220 L325,265 L310,305 L290,320 L265,315 L240,295 L225,260 L215,225 L210,195 Z" />
+        <!-- Australia -->
+        <path class="continent" d="M755,235 L850,230 L880,250 L885,285 L870,310 L845,320 L810,315 L780,300 L760,275 L750,255 Z" />
+        <!-- New Zealand -->
+        <path class="continent" d="M878,285 L892,278 L898,295 L888,315 L876,310 Z" />
+        <!-- Greenland -->
+        <path class="continent" d="M310,25 L360,18 L380,32 L370,50 L345,55 L315,45 Z" />
+
+        <!-- Wine zone markers -->
+        <!-- France -->
+        <g class="zone-marker" data-country="france" transform="translate(456,112)">
+          <circle r="10" class="marker-circle"/>
+          <text class="marker-label" y="22">France</text>
+        </g>
+        <!-- Italy -->
+        <g class="zone-marker" data-country="italy" transform="translate(487,122)">
+          <circle r="9" class="marker-circle"/>
+          <text class="marker-label" y="21">Italy</text>
+        </g>
+        <!-- Spain -->
+        <g class="zone-marker" data-country="spain" transform="translate(435,126)">
+          <circle r="9" class="marker-circle"/>
+          <text class="marker-label" y="21">Spain</text>
+        </g>
+        <!-- Germany -->
+        <g class="zone-marker" data-country="germany" transform="translate(472,90)">
+          <circle r="8" class="marker-circle"/>
+          <text class="marker-label" y="20">Germany</text>
+        </g>
+        <!-- Portugal -->
+        <g class="zone-marker" data-country="portugal" transform="translate(422,128)">
+          <circle r="7" class="marker-circle"/>
+          <text class="marker-label" y="19">Portugal</text>
+        </g>
+        <!-- California -->
+        <g class="zone-marker" data-country="california" transform="translate(140,118)">
+          <circle r="9" class="marker-circle"/>
+          <text class="marker-label" y="21">California</text>
+        </g>
+        <!-- Pacific Northwest / Oregon included in south america data placeholder -->
+        <!-- South America -->
+        <g class="zone-marker" data-country="southamerica" transform="translate(265,272)">
+          <circle r="9" class="marker-circle"/>
+          <text class="marker-label" y="21">S. America</text>
+        </g>
+        <!-- South Africa -->
+        <g class="zone-marker" data-country="southafrica" transform="translate(497,285)">
+          <circle r="8" class="marker-circle"/>
+          <text class="marker-label" y="20">S. Africa</text>
+        </g>
+        <!-- Australia -->
+        <g class="zone-marker" data-country="australia" transform="translate(810,278)">
+          <circle r="9" class="marker-circle"/>
+          <text class="marker-label" y="21">Australia</text>
+        </g>
+        <!-- New Zealand -->
+        <g class="zone-marker" data-country="newzealand" transform="translate(880,298)">
+          <circle r="7" class="marker-circle"/>
+          <text class="marker-label" y="19">N. Zealand</text>
+        </g>
+      </svg>
+    </div>
+
+    <div id="map-panel" class="map-panel" hidden>
+      <div class="panel-nav" id="panel-nav"></div>
+      <div class="panel-content" id="panel-content"></div>
+    </div>
+  </div>
+
   {regionGroups.map(group => (
     <div class="entry-group">
       <p class="group-label">{group.label}</p>
@@ -31,3 +137,284 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     </div>
   ))}
 </CategoryLayout>
+
+<style>
+  .world-map-section {
+    margin-bottom: 3rem;
+  }
+  .map-heading {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 1.5rem;
+    color: var(--text-primary, #f0ebe3);
+    margin: 0 0 0.25rem;
+  }
+  .map-subhead {
+    font-size: 0.85rem;
+    color: var(--text-muted, #9c8c7a);
+    margin: 0 0 1rem;
+  }
+  .map-container {
+    background: #0d0a08;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+  }
+  #wine-map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .continent {
+    fill: #2a1f15;
+    stroke: #4a3520;
+    stroke-width: 0.8;
+  }
+  .marker-circle {
+    fill: rgba(201,168,76,0.2);
+    stroke: #c9a84c;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: fill 0.2s, r 0.2s;
+  }
+  .zone-marker:hover .marker-circle,
+  .zone-marker.active .marker-circle {
+    fill: rgba(201,168,76,0.5);
+    stroke: #e8c86a;
+  }
+  .zone-marker.active .marker-circle {
+    fill: #c9a84c;
+  }
+  .marker-label {
+    fill: #c9a84c;
+    font-size: 7px;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    text-anchor: middle;
+    pointer-events: none;
+    font-weight: 600;
+  }
+  .map-panel {
+    margin-top: 1rem;
+    background: #130e09;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .panel-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted, #9c8c7a);
+  }
+  .nav-crumb {
+    color: #c9a84c;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .nav-crumb:hover { color: #e8c86a; }
+  .nav-sep { color: #5a4a38; }
+  .nav-current { color: var(--text-primary, #f0ebe3); font-weight: 600; }
+  .panel-content h3 {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 1.25rem;
+    color: var(--text-primary, #f0ebe3);
+    margin: 0 0 0.5rem;
+  }
+  .panel-intro {
+    font-size: 0.85rem;
+    color: var(--text-muted, #9c8c7a);
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+  .panel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .tag {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: #c9a84c;
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+  .tag.wine-tag {
+    background: rgba(180,60,60,0.12);
+    border-color: rgba(180,60,60,0.3);
+    color: #c07878;
+  }
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .panel-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 6px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .panel-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(201,168,76,0.07);
+  }
+  .panel-card.subzone-card {
+    cursor: default;
+  }
+  .panel-card.subzone-card:hover {
+    border-color: rgba(201,168,76,0.25);
+    background: rgba(255,255,255,0.04);
+  }
+  .card-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary, #f0ebe3);
+    margin: 0 0 0.3rem;
+  }
+  .card-grape {
+    font-size: 0.72rem;
+    color: #c9a84c;
+    margin: 0 0 0.3rem;
+  }
+  .card-char {
+    font-size: 0.72rem;
+    color: var(--text-muted, #9c8c7a);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .panel-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: #c9a84c;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .panel-link:hover { color: #e8c86a; }
+  @media (max-width: 600px) {
+    .panel-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<script define:vars={{ mapDataJSON, base }}>
+  const mapData = JSON.parse(mapDataJSON);
+  const panel = document.getElementById('map-panel');
+  const panelNav = document.getElementById('panel-nav');
+  const panelContent = document.getElementById('panel-content');
+  let currentCountry = null;
+  let currentRegion = null;
+
+  function clearActiveMarkers() {
+    document.querySelectorAll('.zone-marker.active').forEach(m => m.classList.remove('active'));
+  }
+
+  function renderNav() {
+    let html = '';
+    if (!currentCountry) return (panelNav.innerHTML = '');
+    const country = mapData[currentCountry];
+    if (!currentRegion) {
+      html = `<span class="nav-current">${country.label}</span>`;
+    } else {
+      const region = country.regions[currentRegion];
+      html = `<button class="nav-crumb" data-action="country">${country.label}</button>
+              <span class="nav-sep">›</span>
+              <span class="nav-current">${region.label}</span>`;
+    }
+    panelNav.innerHTML = html;
+    panelNav.querySelector('[data-action="country"]')?.addEventListener('click', () => {
+      currentRegion = null;
+      renderPanel();
+    });
+  }
+
+  function renderPanel() {
+    if (!currentCountry) { panel.hidden = true; return; }
+    panel.hidden = false;
+    renderNav();
+
+    const country = mapData[currentCountry];
+
+    if (!currentRegion) {
+      // Country level: show overview + region cards
+      let html = `<h3>${country.label}</h3>
+        <p class="panel-intro">${country.character}</p>
+        <div class="panel-tags">
+          ${country.grapes.map(g => `<span class="tag">${g}</span>`).join('')}
+        </div>
+        <div class="panel-grid">`;
+      for (const [key, region] of Object.entries(country.regions)) {
+        html += `<div class="panel-card" data-region="${key}">
+          <p class="card-name">${region.label}</p>
+          <p class="card-grape">${region.grapes.slice(0,3).join(', ')}</p>
+          <p class="card-char">${region.character.substring(0, 80)}${region.character.length > 80 ? '…' : ''}</p>
+        </div>`;
+      }
+      html += `</div>`;
+      panelContent.innerHTML = html;
+      panelContent.querySelectorAll('.panel-card').forEach(card => {
+        card.addEventListener('click', () => {
+          currentRegion = card.dataset.region;
+          renderPanel();
+        });
+      });
+    } else {
+      // Region level: show region overview + subzone cards
+      const region = country.regions[currentRegion];
+      let html = `<h3>${region.label}</h3>
+        <p class="panel-intro">${region.character}</p>
+        <div class="panel-tags">
+          ${region.grapes.map(g => `<span class="tag">${g}</span>`).join('')}
+          ${region.wines.map(w => `<span class="tag wine-tag">${w}</span>`).join('')}
+        </div>`;
+      if (region.subzones && region.subzones.length > 0) {
+        html += `<div class="panel-grid">`;
+        for (const sub of region.subzones) {
+          html += `<div class="panel-card subzone-card">
+            <p class="card-name">${sub.name}</p>
+            <p class="card-grape">${sub.grapes.join(', ')}</p>
+            <p class="card-char">${sub.character.substring(0, 100)}${sub.character.length > 100 ? '…' : ''}</p>
+          </div>`;
+        }
+        html += `</div>`;
+      }
+      if (region.link) {
+        html += `<a class="panel-link" href="${base}${region.link}">Read full guide →</a>`;
+      }
+      panelContent.innerHTML = html;
+    }
+  }
+
+  document.querySelectorAll('.zone-marker').forEach(marker => {
+    marker.addEventListener('click', () => {
+      const country = marker.dataset.country;
+      if (currentCountry === country && !currentRegion) {
+        // Deselect
+        currentCountry = null;
+        clearActiveMarkers();
+        panel.hidden = true;
+        return;
+      }
+      currentCountry = country;
+      currentRegion = null;
+      clearActiveMarkers();
+      marker.classList.add('active');
+      renderPanel();
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
