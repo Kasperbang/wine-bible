@@ -1,0 +1,798 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+<TopicLayout
+  title="Barolo"
+  subtitle="Red Wine · Piedmont, Italy"
+  parentLabel="Wine Types"
+  parentPath={`${base}wine-types/`}
+  description="A comprehensive guide to Barolo — the king of Italian wines. The Nebbiolo grape, the communes, the great producers, and how to read the label."
+  stats={[
+    { value: '100% Nebbiolo', label: 'Grape' },
+    { value: '~2,000 ha', label: 'Vineyard area' },
+    { value: 'DOCG 1980', label: 'Classification' },
+    { value: 'Min. 3 years', label: 'Aging (Barolo)' },
+    { value: 'Min. 5 years', label: 'Aging (Riserva)' },
+    { value: '10–30+ years', label: 'Peak' },
+  ]}
+  toc={[
+    { id: 'overview',    label: 'Overview' },
+    { id: 'region',      label: 'The Region' },
+    { id: 'nebbiolo',    label: 'The Grape: Nebbiolo' },
+    { id: 'terroir',     label: 'Terroir & The Two Soils' },
+    { id: 'production',  label: 'Production & Styles' },
+    { id: 'mga',         label: 'The Great Vineyards (MGA)' },
+    { id: 'label',       label: 'Reading the Label' },
+    { id: 'producers',   label: 'Notable Producers' },
+    { id: 'price',       label: 'Price Guide' },
+    { id: 'pairing',     label: 'Food Pairing' },
+  ]}
+>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="topic-section">
+    <h2 class="section-title">Overview</h2>
+    <p class="section-lead">
+      Barolo is Italy's most profound and age-worthy red wine — produced from 100% Nebbiolo in the Langhe hills of Piedmont. It is known as <em>il re dei vini, il vino dei re</em> — the king of wines, the wine of kings. High in tannin, high in acid, and pale in colour, it is a wine that requires patience: young Barolo can be forbiddingly austere. Given a decade, it becomes one of the most complex and compelling wines in the world.
+    </p>
+    <div class="section-body">
+      <p>Barolo is often compared to red Burgundy — not in flavour (the two wines taste nothing alike) but in logic: both are expressions of a single grape variety on a specific piece of land, and both require the producer's name to be the first reference point. Two Barolos from adjacent vineyards can taste radically different. Two Barolos from the same vineyard but different producers can be equally different. Understanding Barolo means understanding the commune, the vineyard, the vintage, and the producer — in that order.</p>
+      <p>The wine achieved DOCG status (Italy's highest classification) in 1980. All Barolo must be 100% Nebbiolo, produced within 11 permitted communes in the Barolo DOCG zone, and aged for a minimum of 38 months (of which 18 in oak) before release. Riserva requires 62 months (of which 24 in oak).</p>
+    </div>
+  </section>
+
+  <!-- THE REGION -->
+  <section id="region" class="topic-section">
+    <h2 class="section-title">The Region</h2>
+    <p class="section-lead">The Barolo DOCG zone covers approximately 2,000 hectares in the Langhe hills of Piedmont, roughly 70 km south of Turin. The landscape is one of rolling hills, medieval hilltop villages, and south- to southwest-facing amphitheatres of vines.</p>
+
+    <!-- SVG Map -->
+    <div class="map-container">
+      <svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" class="region-map" aria-label="Map of the Barolo DOCG communes">
+
+        <!-- Soil zone backgrounds -->
+        <!-- Tortonian zone (west/northwest) -->
+        <path d="M 40,60 C 60,40 130,50 170,90 C 195,115 190,170 170,200 C 150,225 110,230 80,215 C 50,200 30,160 35,120 Z"
+              fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="5 4"/>
+
+        <!-- Helvetian zone (east) -->
+        <path d="M 200,60 C 230,45 290,60 315,100 C 335,135 330,195 305,220 C 280,240 240,235 215,210 C 195,190 195,150 200,120 Z"
+              fill="rgba(100,130,180,0.06)" stroke="rgba(100,130,180,0.2)" stroke-width="1" stroke-dasharray="5 4"/>
+
+        <!-- Soil zone labels -->
+        <text x="88" y="48" fill="rgba(201,168,76,0.55)" font-size="9" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600" letter-spacing="1">TORTONIAN SOILS</text>
+        <text x="88" y="59" fill="rgba(201,168,76,0.4)" font-size="8.5" font-family="Inter, sans-serif" text-anchor="middle">Elegant · Aromatic · Earlier</text>
+
+        <text x="265" y="50" fill="rgba(100,130,200,0.6)" font-size="9" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600" letter-spacing="1">HELVETIAN SOILS</text>
+        <text x="265" y="61" fill="rgba(100,130,200,0.45)" font-size="8.5" font-family="Inter, sans-serif" text-anchor="middle">Austere · Tannic · Age-worthy</text>
+
+        <!-- Verduno (small, north) -->
+        <circle cx="95" cy="90" r="5" fill="rgba(201,168,76,0.6)" stroke="rgba(201,168,76,0.9)" stroke-width="1"/>
+        <text x="106" y="87" fill="var(--text-muted)" font-size="10.5" font-family="Inter, sans-serif">Verduno</text>
+
+        <!-- La Morra (Tortonian, large) -->
+        <circle cx="85" cy="145" r="8" fill="#c9a84c" stroke="#e0c06a" stroke-width="1.5"/>
+        <text x="100" y="141" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">La Morra</text>
+        <text x="100" y="154" fill="rgba(201,168,76,0.7)" font-size="9" font-family="Inter, sans-serif">Tortonian · Largest commune</text>
+
+        <!-- Barolo town (transition) -->
+        <circle cx="155" cy="185" r="7" fill="#c9a84c" stroke="#e0c06a" stroke-width="1.5"/>
+        <text x="168" y="181" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Barolo</text>
+        <text x="168" y="194" fill="rgba(201,168,76,0.7)" font-size="9" font-family="Inter, sans-serif">Transition soils · Cannubi MGA</text>
+
+        <!-- Castiglione Falletto (Helvetian) -->
+        <circle cx="230" cy="135" r="7" fill="#7a90c4" stroke="#9aacda" stroke-width="1.5"/>
+        <text x="243" y="131" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Castiglione Falletto</text>
+        <text x="243" y="144" fill="rgba(100,130,200,0.8)" font-size="9" font-family="Inter, sans-serif">Helvetian · Concentrated</text>
+
+        <!-- Serralunga d'Alba (Helvetian, most austere) -->
+        <circle cx="280" cy="185" r="7.5" fill="#7a90c4" stroke="#9aacda" stroke-width="1.5"/>
+        <text x="294" y="181" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Serralunga d'Alba</text>
+        <text x="294" y="194" fill="rgba(100,130,200,0.8)" font-size="9" font-family="Inter, sans-serif">Helvetian · Most age-worthy</text>
+
+        <!-- Monforte d'Alba (mixed, south) -->
+        <circle cx="190" cy="255" r="6.5" fill="rgba(150,140,100,0.8)" stroke="rgba(180,170,120,0.9)" stroke-width="1.5"/>
+        <text x="204" y="251" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Monforte d'Alba</text>
+        <text x="204" y="264" fill="var(--text-muted)" font-size="9" font-family="Inter, sans-serif">Mixed soils · Bussia MGA</text>
+
+        <!-- Compass -->
+        <text x="344" y="28" fill="#5c504a" font-size="11" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600">N</text>
+        <polygon points="344,32 341,44 344,41 347,44" fill="#5c504a"/>
+        <line x1="344" y1="44" x2="344" y2="52" stroke="#5c504a" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- Legend -->
+        <circle cx="40" cy="298" r="6" fill="#c9a84c"/>
+        <text x="52" y="302" fill="var(--text-secondary)" font-size="10" font-family="Inter, sans-serif">Tortonian communes</text>
+        <circle cx="40" cy="318" r="6" fill="#7a90c4"/>
+        <text x="52" y="322" fill="var(--text-secondary)" font-size="10" font-family="Inter, sans-serif">Helvetian communes</text>
+        <circle cx="195" cy="298" r="6" fill="rgba(150,140,100,0.8)"/>
+        <text x="207" y="302" fill="var(--text-secondary)" font-size="10" font-family="Inter, sans-serif">Mixed soils</text>
+      </svg>
+    </div>
+
+    <div class="section-body" style="margin-top: 1.5rem;">
+      <p>The Langhe hills roll at elevations of 150–400 metres. The best vineyards occupy south- and southwest-facing slopes, maximising sun exposure for Nebbiolo's late ripening. The valley floors and north-facing slopes are too cold and damp. The Tanaro river runs through the base of the valley, providing a moderating influence on the microclimate.</p>
+    </div>
+  </section>
+
+  <!-- THE GRAPE: NEBBIOLO -->
+  <section id="nebbiolo" class="topic-section">
+    <h2 class="section-title">The Grape: Nebbiolo</h2>
+    <p class="section-lead">Named for the fog (<em>nebbia</em>) that blankets the Langhe hills each October during harvest, Nebbiolo is one of the world's most paradoxical grapes: it looks pale but tastes powerful, and it ages from forbidding to magnificent.</p>
+    <div class="section-body">
+      <p>Nebbiolo ripens late — among the very last of the red grapes, typically in the first two weeks of October. This forces it to be planted on only the best-exposed, warmest south-facing slopes, where it can accumulate enough sugar to reach full physiological ripeness before the autumn rains arrive.</p>
+      <p>Its structural profile is extraordinary: <strong style="color: var(--text-primary); font-weight:500;">high tannin and high acid simultaneously</strong> — a combination rare in the grape world. Most high-tannin grapes (Cabernet Sauvignon, Nebbiolo, Sagrantino) tend toward lower natural acidity. Nebbiolo defies this. The result is a wine built like a fortress in youth: tannic, acidic, austere, grippy. Time in bottle softens the tannin through polymerisation while the acid preserves freshness. The transformation over 10–20 years in a good Barolo is one of the most dramatic in wine.</p>
+    </div>
+    <div class="fact-list">
+      <span class="fact-key">Name origin</span>
+      <span class="fact-val">Nebbia — Italian for fog; the valley is fog-covered at harvest time</span>
+      <span class="fact-key">Ripening</span>
+      <span class="fact-val">Very late — first two weeks of October in Barolo</span>
+      <span class="fact-key">Tannin</span>
+      <span class="fact-val">Very high — among the highest of any red variety</span>
+      <span class="fact-key">Acidity</span>
+      <span class="fact-val">High — rare combination with such high tannin</span>
+      <span class="fact-key">Colour</span>
+      <span class="fact-val">Pale ruby — fades quickly to garnet and orange-brick with age</span>
+      <span class="fact-key">Classic aromas</span>
+      <span class="fact-val">Tar and roses — the definitive shorthand. Also: dried cherry, leather, tobacco, truffle, violets, dried herbs</span>
+      <span class="fact-key">Also known as</span>
+      <span class="fact-val">Chiavennasca (Valtellina), Spanna (northern Piedmont), Picutener (Valle d'Aosta)</span>
+      <span class="fact-key">Related wines</span>
+      <span class="fact-val">Barbaresco DOCG, Nebbiolo d'Alba DOC, Gattinara DOCG, Ghemme DOCG, Valtellina Superiore DOCG</span>
+    </div>
+    <div class="nebbiolo-flavour">
+      <div class="nf-col">
+        <p class="nf-heading">Young (1–8 years)</p>
+        <ul class="flavour-list">
+          <li>Sour cherry, dried plum</li>
+          <li>Rose petal, violet</li>
+          <li>Tar, asphalt</li>
+          <li>Iron, blood</li>
+          <li>Grippy, drying tannin</li>
+          <li>Firm, high acidity</li>
+        </ul>
+      </div>
+      <div class="nf-col">
+        <p class="nf-heading">Mature (8–20 years)</p>
+        <ul class="flavour-list">
+          <li>Dried rose, pot-pourri</li>
+          <li>Forest floor, truffle</li>
+          <li>Leather, tobacco</li>
+          <li>Liquorice, tar</li>
+          <li>Silky, integrated tannin</li>
+          <li>Savoury, umami finish</li>
+        </ul>
+      </div>
+      <div class="nf-col">
+        <p class="nf-heading">Old (20+ years)</p>
+        <ul class="flavour-list">
+          <li>Dried fruit, fig</li>
+          <li>Camphor, incense</li>
+          <li>Mushroom, earth</li>
+          <li>Game, game fat</li>
+          <li>Orange peel, spice</li>
+          <li>Velvet texture, endless length</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERROIR & THE TWO SOILS -->
+  <section id="terroir" class="topic-section">
+    <h2 class="section-title">Terroir & The Two Soils</h2>
+    <p class="section-lead">The single most important concept in understanding Barolo is the difference between its two dominant soil types. They were formed in different geological periods, and the wines they produce are recognisably, sometimes dramatically, different.</p>
+
+    <div class="soil-compare">
+      <div class="soil-card soil-tortonian">
+        <div class="soil-header">
+          <span class="soil-era">Tortonian Period · ~7–11 million years ago</span>
+          <h3 class="soil-name">Tortonian Soils</h3>
+          <p class="soil-communes">La Morra · Barolo</p>
+        </div>
+        <div class="soil-body">
+          <p>Softer, lighter, calcareous clay-marl soils. More fertile and easier to work. The clay component retains moisture, moderating stress during dry summers. These soils warm up faster in spring, giving an earlier start to the growing season.</p>
+          <div class="soil-wines">
+            <p class="soil-wine-heading">Wine character</p>
+            <ul class="flavour-list">
+              <li>More aromatic and perfumed</li>
+              <li>Softer tannin structure</li>
+              <li>Earlier accessibility (7–12 years)</li>
+              <li>More violet, rose, and red fruit</li>
+              <li>La Morra: the most fragrant, approachable style</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="soil-card soil-helvetian">
+        <div class="soil-header">
+          <span class="soil-era">Helvetian Period · ~11–16 million years ago</span>
+          <h3 class="soil-name">Helvetian Soils</h3>
+          <p class="soil-communes">Serralunga d'Alba · Castiglione Falletto</p>
+        </div>
+        <div class="soil-body">
+          <p>Harder, more compact, blue-grey marlstone with higher sand and mineral content. Less fertile, which naturally limits yields. These soils drain better but stress the vine more during drought. They retain heat longer into the evening.</p>
+          <div class="soil-wines">
+            <p class="soil-wine-heading">Wine character</p>
+            <ul class="flavour-list">
+              <li>More austere and structured</li>
+              <li>Higher tannin and extraction</li>
+              <li>Needs 12–20+ years to open</li>
+              <li>More tar, leather, and dried fruit</li>
+              <li>Serralunga: the longest-lived, most powerful style</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body" style="margin-top: 1.5rem;">
+      <p><strong style="color: var(--text-primary); font-weight:500;">Monforte d'Alba</strong> sits between the two zones with mixed soils and a more varied range of styles — some approaching Serralunga in power, others closer to La Morra in fragrance. It is home to the important Bussia MGA. <strong style="color: var(--text-primary); font-weight:500;">Verduno</strong> is the smallest of the main communes, producing lighter, more floral Barolos from clay-limestone soils — often the most accessible young.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTION & STYLES -->
+  <section id="production" class="topic-section">
+    <h2 class="section-title">Production & Styles</h2>
+    <p class="section-lead">Barolo sparked one of the most heated debates in Italian wine history: traditionalists versus modernists. The argument has now largely settled into a productive middle ground, but the two approaches still produce distinctly different wines.</p>
+
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 1.5rem;">
+      <div class="info-card">
+        <p class="info-card-meta">Traditional method</p>
+        <h3 class="info-card-title">Classical Style</h3>
+        <p>Long maceration of 30–60+ days with the skins to extract maximum tannin and colour. Extended aging in large Slavonian oak botti (2,500–50,000 litres, often 50+ years old). Wines emerge austere, tannic, and closed — sometimes for decades. At their peak, they achieve extraordinary complexity, depth, and longevity. Bartolo Mascarello and Giacomo Conterno are the benchmarks.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Modern method</p>
+        <h3 class="info-card-title">Modernist Style</h3>
+        <p>Short maceration of 7–14 days, often in rotary fermenters, to extract colour and fruit without harsh tannin. Aging in small French oak barriques (225 litres, often new or second-fill) for 12–24 months. Wines are more immediately accessible, fruit-forward, and structured by oak rather than tannin. Pioneered in the 1980s by the "Barolo Boys" — Elio Altare, Enrico Scavino, and Luciano Sandrone.</p>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>The "Barolo Wars" of the 1980s–90s were genuine: traditionalists accused modernists of making international-style wine that sacrificed Barolo's identity for earlier approachability. Modernists argued that traditional Barolo was often flawed — volatile, oxidised, tannic without the complexity to justify it. Both sides had valid points. The debate produced better wine on both sides, and most serious producers today occupy a middle ground: moderate maceration lengths, large and small oak in combination, and increasing attention to viticulture over vinification.</p>
+    </div>
+
+    <h3 class="subsection-title">Legal Requirements</h3>
+    <div class="fact-list">
+      <span class="fact-key">Grape</span>
+      <span class="fact-val">100% Nebbiolo — no blending permitted</span>
+      <span class="fact-key">Barolo</span>
+      <span class="fact-val">Minimum 38 months aging, of which 18 in oak. Released no earlier than 3 years after harvest.</span>
+      <span class="fact-key">Barolo Riserva</span>
+      <span class="fact-val">Minimum 62 months aging, of which 24 in oak. Released no earlier than 5 years after harvest.</span>
+      <span class="fact-key">Alcohol</span>
+      <span class="fact-val">Minimum 13% — in practice 13.5–15% in warm vintages</span>
+      <span class="fact-key">Communes</span>
+      <span class="fact-val">Barolo, La Morra, Castiglione Falletto, Serralunga d'Alba, Monforte d'Alba, and six lesser-known communes</span>
+    </div>
+  </section>
+
+  <!-- THE GREAT VINEYARDS (MGA) -->
+  <section id="mga" class="topic-section">
+    <h2 class="section-title">The Great Vineyards (MGA)</h2>
+    <p class="section-lead">Since 2010, Barolo has had an official classification of 181 individual vineyard sites called MGAs (Menzione Geografica Aggiuntiva). These are Barolo's equivalent of Burgundy's Premier Cru and Grand Cru vineyards — sites of recognised, named quality. The MGA name may appear on the label.</p>
+    <div class="section-body">
+      <p>The MGA system formalised what producers had known for generations: that certain vineyard sites consistently produce superior wine. Cannubi, in the commune of Barolo, is the most historically celebrated. Vigna Rionda in Serralunga d'Alba and Rocche di Castiglione are the others most frequently cited as Barolo's finest.</p>
+    </div>
+    <div class="mga-grid">
+      <div class="mga-card">
+        <span class="mga-commune">Barolo</span>
+        <h4 class="mga-name">Cannubi</h4>
+        <p class="mga-desc">The most historically famous vineyard in all of Barolo. Transition soils between Tortonian and Helvetian. Produces wines of extraordinary balance — aromatic like La Morra, structured like Castiglione. Multiple producers hold plots; Luciano Sandrone's Cannubi Boschis (now simply Cannubi) is the reference.</p>
+      </div>
+      <div class="mga-card">
+        <span class="mga-commune">Castiglione Falletto</span>
+        <h4 class="mga-name">Rocche di Castiglione</h4>
+        <p class="mga-desc">The crown jewel of Castiglione Falletto. Southeast-facing amphitheatre of Helvetian soils producing wines of extraordinary precision and longevity. Bruno Giacosa's red-label Riserva from this vineyard is among the finest Barolo ever made. Vietti also makes a benchmark version.</p>
+      </div>
+      <div class="mga-card">
+        <span class="mga-commune">Serralunga d'Alba</span>
+        <h4 class="mga-name">Vigna Rionda</h4>
+        <p class="mga-desc">One of Serralunga's finest sites. Pure Helvetian marl on a south-facing slope. Produces Barolo of exceptional structure and longevity — not for the impatient. Massolino and Giovanni Rosso make the most celebrated versions. A wine to open at 15–20 years minimum.</p>
+      </div>
+      <div class="mga-card">
+        <span class="mga-commune">Serralunga d'Alba</span>
+        <h4 class="mga-name">Cascina Francia</h4>
+        <p class="mga-desc">The historic vineyard of Giacomo Conterno — the source of their Monfortino Riserva. While Monfortino is not itself an MGA label, the fruit comes exclusively from Cascina Francia. The vineyard has been in the Conterno family since the 1970s and represents the pinnacle of Serralunga Barolo.</p>
+      </div>
+      <div class="mga-card">
+        <span class="mga-commune">La Morra</span>
+        <h4 class="mga-name">Cerequio</h4>
+        <p class="mga-desc">One of La Morra's finest sites, shared with the commune of Barolo. Produces some of the most perfumed and elegant Barolos in the entire zone. Michele Chiarlo and Roberto Voerzio are key producers. A wine that demonstrates the fragrance of Tortonian soils at its most refined.</p>
+      </div>
+      <div class="mga-card">
+        <span class="mga-commune">Monforte d'Alba</span>
+        <h4 class="mga-name">Bussia</h4>
+        <p class="mga-desc">The largest and most celebrated MGA in Monforte d'Alba. Often subdivided into smaller sub-zones (Bussia Soprana, Bussia Sottana). Aldo Conterno's Gran Bussia — a blend of three Bussia sub-zones — is among the most age-worthy wines in the appellation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- READING THE LABEL -->
+  <section id="label" class="topic-section">
+    <h2 class="section-title">Reading the Label</h2>
+    <p class="section-lead">Barolo labels have become more informative since the MGA system was introduced in 2010. The hierarchy on the label now tells you exactly what you're buying.</p>
+    <div class="fact-list">
+      <span class="fact-key">Barolo DOCG</span>
+      <span class="fact-val">A blend from one or more communes. The broadest designation. Often the best value entry point from quality producers.</span>
+      <span class="fact-key">Barolo + Commune</span>
+      <span class="fact-val">E.g. "Barolo La Morra" or "Barolo Serralunga d'Alba". Wines from a single commune. Indicates the terroir style without specifying a vineyard.</span>
+      <span class="fact-key">Barolo + MGA</span>
+      <span class="fact-val">E.g. "Barolo Cannubi" or "Barolo Rocche di Castiglione". A single-vineyard wine from a classified site. The most specific — and usually most expensive — designation.</span>
+      <span class="fact-key">Barolo Riserva</span>
+      <span class="fact-val">Minimum 5 years aging. Always a producer's selection of their finest material. Not inherently better than a standard Barolo — depends entirely on the producer and vintage.</span>
+      <span class="fact-key">Vintage</span>
+      <span class="fact-val">Barolo is always vintage-dated. The vintage year matters enormously — 2010, 2013, 2015, 2016, and 2019 are recent classics. 2017 and 2022 are riper, more approachable styles.</span>
+      <span class="fact-key">Alcohol</span>
+      <span class="fact-val">Typically 13.5–15%. A useful indicator of vintage warmth — higher alcohol suggests a warmer, riper year.</span>
+    </div>
+
+    <h3 class="subsection-title">Key Recent Vintages</h3>
+    <div class="vintage-grid">
+      <div class="vintage-row">
+        <span class="vintage-year">2016</span>
+        <span class="vintage-stars">★★★★★</span>
+        <span class="vintage-desc">Widely considered the vintage of the decade. Perfect balance of fruit, tannin, and acidity. The wines are magnificent but need time. Cellar until 2026+.</span>
+      </div>
+      <div class="vintage-row">
+        <span class="vintage-year">2015</span>
+        <span class="vintage-stars">★★★★★</span>
+        <span class="vintage-desc">Warm, generous, and early-maturing. More approachable now than 2016. Rich fruit, ripe tannin. Excellent across the board.</span>
+      </div>
+      <div class="vintage-row">
+        <span class="vintage-year">2013</span>
+        <span class="vintage-stars">★★★★★</span>
+        <span class="vintage-desc">Classic, traditional vintage. High acid, firm tannin, great aging potential. Still quite closed. For patience.</span>
+      </div>
+      <div class="vintage-row">
+        <span class="vintage-year">2019</span>
+        <span class="vintage-stars">★★★★☆</span>
+        <span class="vintage-desc">Very promising — balanced and structured. Recently released. Give it time but already showing well.</span>
+      </div>
+      <div class="vintage-row">
+        <span class="vintage-year">2017</span>
+        <span class="vintage-stars">★★★☆☆</span>
+        <span class="vintage-desc">Hot, drought-affected year. Wines are riper and less typical — good quality but lower acidity means earlier drinking and less complexity at the top end.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTABLE PRODUCERS -->
+  <section id="producers" class="topic-section">
+    <h2 class="section-title">Notable Producers</h2>
+    <p class="section-lead">The producer is the first reference point in Barolo. The same vineyard from two different producers can be unrecognisable as the same wine.</p>
+
+    <h3 class="subsection-title">The Traditionalists</h3>
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 2rem;">
+      <div class="info-card">
+        <h3 class="info-card-title">Giacomo Conterno</h3>
+        <p>The most revered name in traditional Barolo. Their Monfortino Riserva — from Cascina Francia in Serralunga, released only in exceptional years, aged 7–10 years in large botti — is Italy's most collectible wine. The standard Cascina Francia Barolo is nearly as impressive and more consistently available. Now run by Roberto Conterno, son of the legendary Giovanni.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Bruno Giacosa</h3>
+        <p>Arguably the greatest Barolo producer of the 20th century. A négociant who never owned vineyards until late in his career, yet consistently produced wines of extraordinary precision and longevity. His red-label Riservas from Rocche di Castiglione and Falletto di Serralunga are legendary. The estate continues under his daughter Bruna.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Bartolo Mascarello</h3>
+        <p>The philosophical guardian of traditional Barolo. His wine is always a blend across multiple communes — a deliberate rejection of the MGA single-vineyard movement. The labels occasionally bear political statements ("No Barrique, No Berlusconi" is the most famous). Now run by his daughter Maria Teresa. The Barolo is one of the longest-lived in the appellation.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Giuseppe Mascarello & Figlio</h3>
+        <p>No relation to Bartolo. Their flagship is the Monprivato MGA in Castiglione Falletto — a monopole (sole ownership) of one of the finest Helvetian-soil sites in Barolo. Structured, powerful, tannic, and built for decades. One of the purest expressions of Castiglione Falletto on the market.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">The Modernists & Middle Ground</h3>
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 2rem;">
+      <div class="info-card">
+        <h3 class="info-card-title">Luciano Sandrone</h3>
+        <p>Pioneer of the modernist revolution. His Cannubi Boschis (now called Cannubi) from the commune of Barolo redefined what Barolo could taste like in the 1980s: more approachable, fruit-forward, and polished than the traditional style. Now one of the most celebrated estates in the appellation.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Elio Altare</h3>
+        <p>The intellectual leader of the Barolo Boys. His 1983 decision to adopt short maceration and barriques — having visited Burgundy and been inspired by what he saw — was deeply controversial in the Langhe. The wines are concentrated, glossy, and powerful. La Morra fruit with a distinctly modernist hand.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Vietti</h3>
+        <p>A multi-commune producer making some of the finest single-vineyard Barolos in the appellation. Their Rocche di Castiglione is a benchmark for that MGA. Now American-owned (the Krause family) but winemaker Luca Currado continues the estate's historically consistent trajectory. Also make excellent Barbera d'Asti and Barolo Castiglione (entry-level blend).</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Aldo Conterno</h3>
+        <p>A branch of the legendary Conterno family (Aldo broke with his brother Giovanni in 1969). The Gran Bussia Riserva — a blend of three Bussia sub-zones in Monforte d'Alba — is one of the great Barolo Riservas. Now run by Aldo's three sons. A useful reference point for the Monforte d'Alba style.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Rising Stars & Value</h3>
+    <div class="cards-grid cards-grid-2">
+      <div class="info-card">
+        <h3 class="info-card-title">Giovanni Rosso</h3>
+        <p>Serralunga d'Alba producer making some of the most exciting Barolos of the current generation. The Vigna Rionda MGA is extraordinary — classical Serralunga structure with a precision of fruit that reflects modern viticulture. One of the most important producers to watch.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Giacomo Fenocchio</h3>
+        <p>Bussia MGA in Monforte d'Alba. Traditional approach, large botti, long maceration. One of the most consistent value propositions in Barolo — wines of real quality at prices well below the headline names. The Bussia Riserva is a benchmark for what patience can achieve in a good vintage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE GUIDE -->
+  <section id="price" class="topic-section">
+    <h2 class="section-title">Price Guide</h2>
+    <p class="section-lead">Barolo pricing is driven by producer reputation, MGA status, and vintage. Unlike Burgundy, the price ceiling is lower — which makes the top tier genuinely accessible by comparison.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <div class="price-range">€25–50</div>
+        <div class="price-body">
+          <h4 class="price-label">Entry Barolo</h4>
+          <p class="price-desc">Multi-commune blends from good producers. Vietti Castiglione, Fenocchio Barolo, Giacomo Fenocchio. Good introduction to the variety; expect 5–8 years minimum before drinking.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€50–100</div>
+        <div class="price-body">
+          <h4 class="price-label">Quality Barolo</h4>
+          <p class="price-desc">Commune-specific wines from established producers. Sandrone Le Vigne, Vietti Lazzarito, Mascarello Barolo. The most satisfying tier for a wine club — serious quality at a rational price.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€100–250</div>
+        <div class="price-body">
+          <h4 class="price-label">Single-Vineyard MGA</h4>
+          <p class="price-desc">Sandrone Cannubi, Vietti Rocche di Castiglione, Giovanni Rosso Vigna Rionda, Giacomo Conterno Cascina Francia. These are the wines that define what Barolo can be. Need 10–15 years to show their best.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€300–800</div>
+        <div class="price-body">
+          <h4 class="price-label">Prestige Riserva</h4>
+          <p class="price-desc">Giacomo Conterno Monfortino (~€500–800), Bruno Giacosa red-label Riserva (~€400–700), Bartolo Mascarello (~€200–350), Roberto Voerzio single-vineyard (~€300–600). Italy's equivalent of Burgundy Grand Cru.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD PAIRING -->
+  <section id="pairing" class="topic-section">
+    <h2 class="section-title">Food Pairing</h2>
+    <p class="section-lead">Piedmontese cuisine and Barolo evolved together over centuries. The wine's high tannin and acidity are designed for rich, fatty, and umami-rich foods — it is not a wine for drinking without food.</p>
+    <div class="pairing-grid">
+      <div class="pairing-row">
+        <span class="pairing-wine">Classic pairings</span>
+        <span class="pairing-foods">Brasato al Barolo (beef braised in Barolo wine) — the perfect match. Slow-cooked braised meats in general: osso buco, short rib, oxtail. The wine's tannin cuts through the fat; the acidity lifts the richness.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">White truffle</span>
+        <span class="pairing-foods">Barolo and white truffle is one of the great gastronomic combinations in the world. Tajarin (thin Piedmontese egg pasta) with white truffle shavings. Risotto al tartufo. The earthiness of aged Barolo and the pungency of truffle are perfectly complementary.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Game</span>
+        <span class="pairing-foods">Hare ragù (the classic Piedmontese preparation), roast wild boar, venison, pheasant, pigeon. The gaminess of aged Barolo meets game's intensity without either overwhelming the other.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Pasta & Risotto</span>
+        <span class="pairing-foods">Tajarin with meat ragù, pappardelle with hare, risotto al Barolo (the wine is used in the risotto itself — cook with good Barolo, drink great Barolo alongside). The egg-rich pasta of Piedmont handles the tannin particularly well.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Aged Cheese</span>
+        <span class="pairing-foods">Castelmagno (the great aged Piedmontese cheese), Parmigiano Reggiano aged 36+ months, aged Pecorino. The umami and fat of aged cheese soften tannin and extend the wine's finish.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Avoid</span>
+        <span class="pairing-foods">Fish, delicate dishes, light pasta with butter or cream, spicy food. Barolo's tannin will overwhelm any delicate preparation. Also avoid opening a young Barolo (under 8 years) without decanting at least 2–3 hours — it needs air to open.</span>
+      </div>
+    </div>
+  </section>
+
+</TopicLayout>
+
+<style>
+  /* Map */
+  .map-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .region-map {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  /* Nebbiolo flavour grid */
+  .nebbiolo-flavour {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .nf-col {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem;
+  }
+
+  .nf-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.875rem;
+  }
+
+  /* Soil compare */
+  .soil-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .soil-card {
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .soil-tortonian { border-top: 3px solid #c9a84c; }
+  .soil-helvetian { border-top: 3px solid #7a90c4; }
+
+  .soil-header {
+    padding: 1.25rem 1.5rem 1rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .soil-era {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.375rem;
+  }
+
+  .soil-name {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .soil-communes {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .soil-body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .soil-body > p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .soil-wine-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem;
+  }
+
+  /* MGA grid */
+  .mga-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .mga-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .mga-commune {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .mga-name {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.625rem;
+  }
+
+  .mga-desc {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Vintage grid */
+  .vintage-grid {
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .vintage-row {
+    display: grid;
+    grid-template-columns: 3.5rem 6rem 1fr;
+    gap: 1.25rem;
+    padding: 0.875rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .vintage-row:last-child { border-bottom: none; }
+
+  .vintage-year {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .vintage-stars {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .vintage-desc {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Price / Pairing */
+  .price-tiers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .price-tier {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.125rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .price-tier:last-child { border-bottom: none; }
+
+  .price-range {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 6.5rem;
+    padding-top: 0.1rem;
+  }
+
+  .price-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-desc {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .pairing-grid {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .pairing-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .pairing-row:last-child { border-bottom: none; }
+
+  .pairing-wine {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .pairing-foods {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .flavour-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .flavour-list li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    padding-left: 0.875rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .flavour-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .soil-compare { grid-template-columns: 1fr; }
+    .nebbiolo-flavour { grid-template-columns: 1fr; }
+    .mga-grid { grid-template-columns: 1fr; }
+    .vintage-row { grid-template-columns: 3rem 5rem 1fr; gap: 0.75rem; }
+    .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .price-range { width: 5.5rem; font-size: 0.875rem; }
+  }
+</style>
