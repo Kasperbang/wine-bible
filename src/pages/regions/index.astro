@@ -1,7 +1,7 @@
 ---
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
 import { regionGroups } from '../../data/regions';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 <CategoryLayout
   title="Regions"

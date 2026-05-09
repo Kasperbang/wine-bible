@@ -9,7 +9,7 @@ interface Props {
   toc: { id: string; label: string }[];
 }
 const { title, subtitle, parentLabel, parentPath, description = '', stats, toc } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 <html lang="en">
   <head>
