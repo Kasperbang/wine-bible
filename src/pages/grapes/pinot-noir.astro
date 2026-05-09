@@ -1,0 +1,701 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<TopicLayout
+  title="Pinot Noir"
+  subtitle="Red Grape · Burgundy, France"
+  parentLabel="Grapes"
+  parentPath={`${base}grapes/`}
+  description="A comprehensive guide to Pinot Noir — its character, key regions, Burgundy's classification system, and the world's greatest producers."
+  stats={[
+    { value: 'Light–Medium', label: 'Body' },
+    { value: 'High', label: 'Acidity' },
+    { value: 'Low–Medium', label: 'Tannin' },
+    { value: 'Pale ruby', label: 'Colour' },
+    { value: 'Côte d\'Or', label: 'Heartland' },
+    { value: '5–25+ years', label: 'Peak (Grand Cru)' },
+  ]}
+  toc={[
+    { id: 'overview',        label: 'Overview' },
+    { id: 'character',       label: 'Origins & Character' },
+    { id: 'vineyard',        label: 'In the Vineyard' },
+    { id: 'flavour',         label: 'Flavour Profile' },
+    { id: 'regions',         label: 'Key Regions' },
+    { id: 'classification',  label: 'Burgundy Classification' },
+    { id: 'label',           label: 'Reading the Label' },
+    { id: 'producers',       label: 'Notable Producers' },
+    { id: 'price',           label: 'Price Guide' },
+    { id: 'pairing',         label: 'Food Pairing' },
+  ]}
+>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="topic-section">
+    <h2 class="section-title">Overview</h2>
+    <p class="section-lead">
+      Pinot Noir is the most demanding and temperamental of the world's great red grape varieties. Its thin skin makes it vulnerable to rot, disease, and climate extremes. Its low tannin and high acidity leave nowhere to hide — every flaw in vineyard or cellar shows plainly in the glass. Yet in the right place, with the right producer, it produces wines of extraordinary complexity: silk-textured, fragrant, and capable of evolving over decades.
+    </p>
+    <div class="section-body">
+      <p>It is the grape that made Burgundy's Côte d'Or one of the most contested and expensive pieces of agricultural land on earth. A Grand Cru vine from Romanée-Conti or Chambertin may produce just a few hundred bottles per year, each from a plot no larger than a garden. The argument that a single small parcel of land can produce something irreplaceable and unrepeatable — this is what Pinot Noir proved to the wine world.</p>
+      <p>Winemakers around the world have spent the past fifty years trying to replicate what Burgundy does with this grape. Oregon, New Zealand's Central Otago, and California's Sonoma Coast have produced remarkable results. None have fully succeeded. The combination of Burgundy's ancient chalk and limestone soils, its marginal climate, and its centuries of viticultural knowledge remains, for now, irreducible.</p>
+    </div>
+  </section>
+
+  <!-- ORIGINS & CHARACTER -->
+  <section id="character" class="topic-section">
+    <h2 class="section-title">Origins & Character</h2>
+    <p class="section-lead">One of the oldest cultivated grape varieties in existence, native to Burgundy, and parent to dozens of varieties now grown across the world.</p>
+    <div class="section-body">
+      <p>Pinot Noir has been cultivated in Burgundy for at least 1,400 years. Cistercian monks in the medieval period were instrumental in identifying and mapping the best vineyard sites — a process that shaped the classification system that still governs Burgundy today. The name "Pinot" derives from the pine-cone shape of the grape's tight, compact bunches.</p>
+      <p>The variety mutates readily. "Pinot" refers to a family of clones rather than a single stable genotype. Pinot Gris and Pinot Blanc are colour mutations of the same variety. More significantly, Pinot Noir crossed with Gouais Blanc (now almost extinct) to produce Chardonnay — making it the parent of the world's most planted white grape.</p>
+    </div>
+    <div class="fact-list">
+      <span class="fact-key">Origin</span>
+      <span class="fact-val">Burgundy, France — cultivated for at least 1,400 years</span>
+      <span class="fact-key">Family</span>
+      <span class="fact-val">Pinot family; parent of Chardonnay, Pinot Gris, Pinot Blanc, Pinot Meunier</span>
+      <span class="fact-key">Skin</span>
+      <span class="fact-val">Thin — high susceptibility to disease and climate damage</span>
+      <span class="fact-key">Bunch</span>
+      <span class="fact-val">Small, tight, pine-cone shaped — increases disease pressure</span>
+      <span class="fact-key">Ripening</span>
+      <span class="fact-val">Early — among the first red grapes to ripen each harvest</span>
+      <span class="fact-key">Permitted in</span>
+      <span class="fact-val">Burgundy, Champagne, Alsace, Loire, Germany (Spätburgunder), Oregon, California, New Zealand, and many others</span>
+    </div>
+  </section>
+
+  <!-- IN THE VINEYARD -->
+  <section id="vineyard" class="topic-section">
+    <h2 class="section-title">In the Vineyard</h2>
+    <p class="section-lead">Pinot Noir is often called the "heartbreak grape" by those who grow it. It demands the closest site selection of any major variety — and then demands equally close attention throughout the growing season.</p>
+    <div class="cards-grid cards-grid-2">
+      <div class="info-card">
+        <p class="info-card-meta">Key challenge</p>
+        <h3 class="info-card-title">Climate Sensitivity</h3>
+        <p>Pinot Noir requires a cool climate to retain its defining acidity and aromatic complexity. Too warm, and the red fruit turns jammy, the freshness disappears, the wine loses its distinctiveness. Even moderate warming between vintages produces a noticeably different style.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Key challenge</p>
+        <h3 class="info-card-title">Disease Pressure</h3>
+        <p>Thin skin and tight bunches create high susceptibility to botrytis (grey rot), powdery mildew, and downy mildew. Wet growing seasons — common in Burgundy — can devastate a crop. Vineyard management decisions in spring and summer are critical.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Key challenge</p>
+        <h3 class="info-card-title">Early Budding</h3>
+        <p>Pinot Noir buds early in spring, exposing young shoots to late frost — a persistent threat in Burgundy. The village of Chablis lost more than half its crop to frost in both 2016 and 2021. Frost management (smudge pots, wind machines, sprinkler systems) is now a significant investment for serious producers.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Key requirement</p>
+        <h3 class="info-card-title">Low Yields</h3>
+        <p>Concentration and complexity in Pinot Noir requires restricted yields. Grand Cru Burgundy is typically harvested at 25–35 hectolitres per hectare. Regional Bourgogne may be twice that. The trade-off is direct: lower yields, deeper wine — and significantly higher cost of production.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLAVOUR PROFILE -->
+  <section id="flavour" class="topic-section">
+    <h2 class="section-title">Flavour Profile</h2>
+    <p class="section-lead">Pinot Noir is a wine of paradox. It is pale in colour but profound in flavour. It has low tannin but exceptional structure. It is delicate and persistent simultaneously.</p>
+    <div class="flavour-grid">
+      <div class="flavour-col">
+        <p class="flavour-heading">Young</p>
+        <ul class="flavour-list">
+          <li>Raspberry</li>
+          <li>Fresh cherry</li>
+          <li>Strawberry</li>
+          <li>Red plum</li>
+          <li>Violet, rose petal</li>
+          <li>Forest floor (sous bois)</li>
+          <li>Subtle spice (cinnamon, allspice)</li>
+        </ul>
+      </div>
+      <div class="flavour-col">
+        <p class="flavour-heading">With Age</p>
+        <ul class="flavour-list">
+          <li>Dried cherry, pomegranate</li>
+          <li>Wild mushroom</li>
+          <li>Autumn leaves, damp earth</li>
+          <li>Dried rose, pot-pourri</li>
+          <li>Game, leather</li>
+          <li>Truffle</li>
+          <li>Soy, umami</li>
+        </ul>
+      </div>
+      <div class="flavour-col">
+        <p class="flavour-heading">Structure</p>
+        <ul class="flavour-list">
+          <li>Colour: pale ruby to garnet</li>
+          <li>Body: light to medium</li>
+          <li>Tannin: low to medium, silky</li>
+          <li>Acidity: high, the backbone</li>
+          <li>Alcohol: 12–14%</li>
+          <li>Finish: long, savory, persistent</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-body" style="margin-top:1.25rem;">
+      <p>The texture is Pinot Noir's most distinctive quality: a transparency and silkiness that no other red grape replicates. Great Burgundy feels as if it dissolves rather than coats the palate. This characteristic, combined with the wines' aromatic complexity and longevity, is what drives the extraordinary prices commanded by the finest producers.</p>
+    </div>
+  </section>
+
+  <!-- KEY REGIONS -->
+  <section id="regions" class="topic-section">
+    <h2 class="section-title">Key Regions</h2>
+    <p class="section-lead">Pinot Noir is cultivated across the world, but it achieves distinctive, serious quality in only a handful of locations. Soil, climate, and altitude all matter — none more than in Burgundy.</p>
+
+    <!-- Côte d'Or SVG Map -->
+    <div class="map-container">
+      <svg viewBox="0 0 340 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="region-map" aria-label="Schematic map of the Côte d'Or, Burgundy">
+
+        <!-- Escarpment edge (west side) -->
+        <path d="M 95,30 C 92,80 90,180 92,280 C 94,380 96,460 98,530"
+              stroke="rgba(201,168,76,0.2)" stroke-width="8" stroke-linecap="round"/>
+
+        <!-- Vineyard slope (the premier and grand cru zone) -->
+        <rect x="98" y="30" width="40" height="500" rx="0"
+              fill="rgba(201,168,76,0.06)" stroke="none"/>
+
+        <!-- Côte de Nuits label band -->
+        <rect x="55" y="30" width="40" height="248" rx="2"
+              fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="75" y="160" fill="rgba(201,168,76,0.6)" font-size="9" font-family="Inter, sans-serif"
+              text-anchor="middle" writing-mode="tb" letter-spacing="2">CÔTE DE NUITS</text>
+
+        <!-- Côte de Beaune label band -->
+        <rect x="55" y="282" width="40" height="248" rx="2"
+              fill="rgba(150,160,200,0.04)" stroke="rgba(150,160,200,0.2)" stroke-width="1"/>
+        <text x="75" y="415" fill="rgba(150,160,200,0.5)" font-size="9" font-family="Inter, sans-serif"
+              text-anchor="middle" writing-mode="tb" letter-spacing="2">CÔTE DE BEAUNE</text>
+
+        <!-- Divider line -->
+        <line x1="55" y1="280" x2="300" y2="280" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 4"/>
+
+        <!-- Villages — Côte de Nuits (north to south) -->
+        <!-- Marsannay -->
+        <circle cx="138" cy="48" r="3" fill="var(--text-muted)"/>
+        <text x="148" y="52" fill="var(--text-muted)" font-size="11" font-family="Inter, sans-serif">Marsannay</text>
+
+        <!-- Fixin -->
+        <circle cx="138" cy="72" r="3" fill="var(--text-muted)"/>
+        <text x="148" y="76" fill="var(--text-muted)" font-size="11" font-family="Inter, sans-serif">Fixin</text>
+
+        <!-- Gevrey-Chambertin — Grand Cru -->
+        <circle cx="138" cy="104" r="5" fill="#c9a84c"/>
+        <text x="150" y="101" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Gevrey-Chambertin</text>
+        <text x="150" y="115" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★ Chambertin · Clos de Bèze</text>
+
+        <!-- Morey-Saint-Denis -->
+        <circle cx="138" cy="140" r="4.5" fill="#c9a84c"/>
+        <text x="150" y="137" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Morey-Saint-Denis</text>
+        <text x="150" y="149" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★ Clos de la Roche · Clos Saint-Denis</text>
+
+        <!-- Chambolle-Musigny -->
+        <circle cx="138" cy="174" r="4.5" fill="#c9a84c"/>
+        <text x="150" y="171" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Chambolle-Musigny</text>
+        <text x="150" y="183" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★ Musigny · Bonnes Mares</text>
+
+        <!-- Vougeot -->
+        <circle cx="138" cy="206" r="4" fill="#c9a84c"/>
+        <text x="150" y="203" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Vougeot</text>
+        <text x="150" y="215" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★ Clos de Vougeot</text>
+
+        <!-- Vosne-Romanée — the pinnacle -->
+        <circle cx="138" cy="236" r="5.5" fill="#c9a84c"/>
+        <text x="150" y="232" fill="var(--text-primary)" font-size="12.5" font-family="Inter, sans-serif" font-weight="600">Vosne-Romanée</text>
+        <text x="150" y="244" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★★ Romanée-Conti · La Tâche · Richebourg</text>
+
+        <!-- Nuits-Saint-Georges -->
+        <circle cx="138" cy="265" r="3.5" fill="var(--text-secondary)"/>
+        <text x="150" y="269" fill="var(--text-secondary)" font-size="11.5" font-family="Inter, sans-serif">Nuits-Saint-Georges</text>
+
+        <!-- Villages — Côte de Beaune (north to south) -->
+        <!-- Aloxe-Corton -->
+        <circle cx="138" cy="298" r="4.5" fill="#c9a84c"/>
+        <text x="150" y="295" fill="var(--text-primary)" font-size="12" font-family="Inter, sans-serif" font-weight="500">Aloxe-Corton</text>
+        <text x="150" y="307" fill="var(--accent)" font-size="9.5" font-family="Inter, sans-serif">★ Corton (only red GC in Beaune)</text>
+
+        <!-- Beaune -->
+        <circle cx="138" cy="334" r="3.5" fill="var(--text-secondary)"/>
+        <text x="150" y="338" fill="var(--text-secondary)" font-size="11.5" font-family="Inter, sans-serif">Beaune</text>
+
+        <!-- Pommard -->
+        <circle cx="138" cy="362" r="3.5" fill="var(--text-secondary)"/>
+        <text x="150" y="366" fill="var(--text-secondary)" font-size="11.5" font-family="Inter, sans-serif">Pommard</text>
+
+        <!-- Volnay -->
+        <circle cx="138" cy="390" r="4" fill="#c9a84c" opacity="0.7"/>
+        <text x="150" y="394" fill="var(--text-primary)" font-size="11.5" font-family="Inter, sans-serif">Volnay</text>
+        <text x="150" y="405" fill="var(--text-muted)" font-size="9.5" font-family="Inter, sans-serif">Premier Cru: Caillerets · Champans</text>
+
+        <!-- Meursault (mostly white) -->
+        <circle cx="138" cy="430" r="3" fill="var(--text-muted)" opacity="0.6"/>
+        <text x="150" y="434" fill="var(--text-muted)" font-size="10.5" font-family="Inter, sans-serif">Meursault (mainly white)</text>
+
+        <!-- Puligny-Montrachet (mainly white) -->
+        <circle cx="138" cy="460" r="3" fill="var(--text-muted)" opacity="0.6"/>
+        <text x="150" y="464" fill="var(--text-muted)" font-size="10.5" font-family="Inter, sans-serif">Puligny-Montrachet (mainly white)</text>
+
+        <!-- Chassagne-Montrachet (mainly white) -->
+        <circle cx="138" cy="490" r="3" fill="var(--text-muted)" opacity="0.6"/>
+        <text x="150" y="494" fill="var(--text-muted)" font-size="10.5" font-family="Inter, sans-serif">Chassagne-Montrachet (mainly white)</text>
+
+        <!-- Santenay -->
+        <circle cx="138" cy="518" r="3" fill="var(--text-muted)"/>
+        <text x="150" y="522" fill="var(--text-muted)" font-size="11" font-family="Inter, sans-serif">Santenay</text>
+
+        <!-- Legend -->
+        <circle cx="100" cy="544" r="5.5" fill="#c9a84c"/>
+        <text x="112" y="548" fill="var(--text-secondary)" font-size="10" font-family="Inter, sans-serif">Grand Cru village</text>
+        <circle cx="192" cy="544" r="3.5" fill="var(--text-secondary)"/>
+        <text x="202" y="548" fill="var(--text-secondary)" font-size="10" font-family="Inter, sans-serif">Village / Premier Cru</text>
+
+        <!-- North indicator -->
+        <text x="310" y="30" fill="#5c504a" font-size="11" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600">N</text>
+        <polygon points="310,34 307,46 310,43 313,46" fill="#5c504a"/>
+        <line x1="310" y1="46" x2="310" y2="54" stroke="#5c504a" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- South label -->
+        <text x="310" y="530" fill="#5c504a" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">S</text>
+      </svg>
+    </div>
+
+    <div class="cards-grid cards-grid-2" style="margin-top: 1.5rem;">
+      <div class="info-card">
+        <p class="info-card-meta">The heartland</p>
+        <h3 class="info-card-title">Côte d'Or, Burgundy</h3>
+        <p>A 50 km escarpment in eastern France. The Côte de Nuits (north) contains almost all of Burgundy's red Grand Cru vineyards. The finest Pinot Noir in the world comes from Vosne-Romanée, Gevrey-Chambertin, and Chambolle-Musigny. Cool, limestone and clay soils.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Oregon, USA</p>
+        <h3 class="info-card-title">Willamette Valley</h3>
+        <p>The most successful New World Pinot Noir region. Cool, rainy climate similar to Burgundy. The Dundee Hills' red volcanic Jory soils produce a distinctive iron-rich, savoury style. Sub-AVAs: Dundee Hills, Eola-Amity Hills, Chehalem Mountains. First planted in 1965.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">New Zealand</p>
+        <h3 class="info-card-title">Central Otago</h3>
+        <p>The world's most southerly major wine region (45°S). Continental climate with extreme diurnal temperature variation — cold nights preserve acidity and aromatic intensity. Schist soils. Produces structured, mineral Pinot Noir with exceptional precision. Central Otago is now arguably New Zealand's most respected red wine region.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">California, USA</p>
+        <h3 class="info-card-title">Sonoma Coast & Santa Barbara</h3>
+        <p>Pacific fog channels through coastal gaps, cooling the Sonoma Coast and the Sta. Rita Hills appellation in Santa Barbara. The result is a leaner, more mineral Pinot Noir than the rest of California — often compared to Oregon in style, though riper and more structured.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">Germany</p>
+        <h3 class="info-card-title">Spätburgunder</h3>
+        <p>Germany's name for Pinot Noir. The Ahr valley (south of Cologne) produces the most serious examples — cool, steep-sloped, schist and slate soils. The Pfalz and Baden also produce good Spätburgunder. German Pinot has improved dramatically in the past two decades and now competes at a serious level.</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-meta">France</p>
+        <h3 class="info-card-title">Alsace & Loire</h3>
+        <p>In Alsace, Pinot Noir is the only permitted red variety — typically light, sometimes rosé-like in style, though the best producers are now making increasingly serious red wines. In the Loire, Sancerre Rouge and Menetou-Salon make light, elegant Pinot Noir from chalk and silex soils.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BURGUNDY CLASSIFICATION -->
+  <section id="classification" class="topic-section">
+    <h2 class="section-title">Burgundy Classification</h2>
+    <p class="section-lead">Burgundy's four-tier quality hierarchy is the most granular and consequential wine classification in the world. Understanding it is the key to understanding Pinot Noir pricing and label reading.</p>
+    <div class="section-body">
+      <p>Unlike Bordeaux's château-based classification, Burgundy classifies the <em>land</em> rather than the producer. A Grand Cru vineyard is Grand Cru regardless of who owns it. This means two bottles with the same vineyard name on the label can be radically different in quality — and price — depending purely on who made them.</p>
+    </div>
+    <div class="classification-tiers">
+      <div class="class-tier tier-grand-cru">
+        <div class="tier-header">
+          <span class="tier-name">Grand Cru</span>
+          <span class="tier-share">~2% of production</span>
+        </div>
+        <p class="tier-desc">The finest individual vineyard sites. Each Grand Cru has its own AOC — the vineyard name alone is the appellation. No village name appears on the label. Examples: <em>Chambertin, Musigny, Clos de Vougeot, Romanée-Conti, La Tâche, Richebourg, Bonnes Mares.</em> The rarest and most expensive wines in the world.</p>
+      </div>
+      <div class="class-tier tier-premier-cru">
+        <div class="tier-header">
+          <span class="tier-name">Premier Cru</span>
+          <span class="tier-share">~12% of production</span>
+        </div>
+        <p class="tier-desc">Named vineyard sites of high quality, ranked below Grand Cru. The label reads: <em>Village + "Premier Cru" + Vineyard Name.</em> Example: <em>Gevrey-Chambertin Premier Cru Les Cazetiers.</em> There are 635 Premier Cru vineyards in Burgundy. Quality and price vary significantly between them.</p>
+      </div>
+      <div class="class-tier tier-village">
+        <div class="tier-header">
+          <span class="tier-name">Village</span>
+          <span class="tier-share">~37% of production</span>
+        </div>
+        <p class="tier-desc">The wine of a named village, blended from multiple plots within that commune. Example: <em>Gevrey-Chambertin, Chambolle-Musigny, Vosne-Romanée.</em> Village wines from prestigious communes with great producers offer the best value introduction to serious Burgundy.</p>
+      </div>
+      <div class="class-tier tier-regional">
+        <div class="tier-header">
+          <span class="tier-name">Regional</span>
+          <span class="tier-share">~51% of production</span>
+        </div>
+        <p class="tier-desc">Wines from anywhere within the greater Burgundy appellation. Labels read: <em>Bourgogne Rouge, Bourgogne Pinot Noir, Bourgogne Passetoutgrains.</em> Entry-level; can offer excellent value from a good producer's declassified fruit or younger-vine production.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- READING THE LABEL -->
+  <section id="label" class="topic-section">
+    <h2 class="section-title">Reading the Label</h2>
+    <p class="section-lead">Burgundy labels are deliberately minimal — and that minimalism hides enormous complexity. The more specific the geography stated on the label, the higher (generally) the quality and price.</p>
+    <div class="fact-list">
+      <span class="fact-key">Regional</span>
+      <span class="fact-val">"Bourgogne Rouge" or "Bourgogne Pinot Noir" — broad appellation, entry level</span>
+      <span class="fact-key">Village</span>
+      <span class="fact-val">Just the village name: "Gevrey-Chambertin" — no vineyard specified</span>
+      <span class="fact-key">Premier Cru</span>
+      <span class="fact-val">Village + "1er Cru" or "Premier Cru" + vineyard: "Chambolle-Musigny 1er Cru Les Amoureuses"</span>
+      <span class="fact-key">Grand Cru</span>
+      <span class="fact-val">Vineyard name only — no village: "Musigny" or "Chambertin" stands alone</span>
+      <span class="fact-key">Domaine vs. Maison</span>
+      <span class="fact-val">Domaine = estate-grown grapes. Maison (négociant) = grapes or wine bought from growers — can still produce great wines (Drouhin, Jadot, Leroy Maison)</span>
+      <span class="fact-key">Monopole</span>
+      <span class="fact-val">A vineyard with a single owner — e.g., Romanée-Conti (DRC), Clos des Lambrays (LVMH). Rare and significant.</span>
+    </div>
+    <div class="section-body" style="margin-top:1.25rem;">
+      <p>The producer's name matters as much as the vineyard. Two Gevrey-Chambertin bottles from adjacent plots — one from Rousseau, one from a lesser producer — can taste completely different and command prices 5x apart. In Burgundy, the domaine is always the first reference point.</p>
+    </div>
+  </section>
+
+  <!-- NOTABLE PRODUCERS -->
+  <section id="producers" class="topic-section">
+    <h2 class="section-title">Notable Producers</h2>
+    <p class="section-lead">The greatest Pinot Noir producers in the world are mostly in Burgundy. Outside France, Oregon and New Zealand have produced results that demand serious attention.</p>
+
+    <h3 class="subsection-title">Burgundy — The Benchmarks</h3>
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 2rem;">
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine de la Romanée-Conti</h3>
+        <p>The most famous wine estate in the world. Owns the entirety of the Romanée-Conti vineyard (1.8 ha) and major holdings in La Tâche, Richebourg, Grands Échézeaux, and others. The wines are produced in minute quantities; prices run from €1,000 to €20,000+ per bottle. The standard against which all Pinot Noir is measured.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine Leroy</h3>
+        <p>Lalou Bize-Leroy practices biodynamic viticulture taken to an extreme — yields as low as 10 hl/ha. Tiny production, extraordinary concentration. Her wines rival DRC in both quality and price. The Chambolle-Musigny Les Charmes and Musigny are among the most profound wines made in Burgundy.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine Armand Rousseau</h3>
+        <p>The reference point for Gevrey-Chambertin. The estate's Chambertin and Chambertin Clos de Bèze are among the longest-lived red wines produced in Burgundy. More accessible (and more fairly priced) than DRC, while offering a compelling argument for the northern Côte de Nuits.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine Georges Roumier</h3>
+        <p>Chambolle-Musigny at its most precise. The Musigny Grand Cru — produced from 0.1 ha — is perhaps the most elegant and ethereal red Burgundy made. The Chambolle-Musigny Les Amoureuses (Premier Cru) is nearly as compelling, and occasionally available at mortal prices.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine J.F. Mugnier</h3>
+        <p>The other great Chambolle domaine. Frédéric Mugnier returned to winemaking in 1985 and rapidly established himself as one of Burgundy's finest. His Musigny is delicate, perfumed, and age-worthy. The Chambolle Village is one of the best-value entry points in all of Burgundy.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine Dujac</h3>
+        <p>Morey-Saint-Denis. Jacques Seysses founded the domaine in 1968 and developed an immediately identifiable style: whole-cluster fermentation, minimal intervention, aromatic, complex wines with great aging potential. Now run by his sons. Clos de la Roche is the flagship.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Oregon</h3>
+    <div class="cards-grid cards-grid-2" style="margin-bottom: 2rem;">
+      <div class="info-card">
+        <h3 class="info-card-title">Eyrie Vineyards</h3>
+        <p>The founding estate of Oregon Pinot Noir. David Lett planted the first vines in the Willamette Valley in 1965, when it was considered commercially reckless. His 1975 Pinot Noir placed in the top tier of a 1979 Paris tasting against top Burgundies — a pivotal moment for New World wine.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Domaine Drouhin Oregon</h3>
+        <p>Véronique Drouhin (of the Beaune négociant family) makes wine in Oregon with Burgundian rigour. The wines show the same precision and restraint as good village Burgundy at a fraction of the price. The Roserock vineyard in the Eola-Amity Hills is now one of Oregon's finest sites.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">New Zealand</h3>
+    <div class="cards-grid cards-grid-2">
+      <div class="info-card">
+        <h3 class="info-card-title">Felton Road</h3>
+        <p>Bannockburn, Central Otago. The most consistently excellent producer in New Zealand. Biodynamic viticulture. The Block 3, Block 5, and Calvert single-vineyard Pinot Noirs show remarkable precision and mineral intensity. The wines age well beyond what many expect from New Zealand.</p>
+      </div>
+      <div class="info-card">
+        <h3 class="info-card-title">Rippon</h3>
+        <p>Lake Wanaka, Central Otago — one of the most photographed vineyards in the world. Biodynamic, one of the oldest Central Otago estates. The Mature Vine Pinot Noir is the benchmark. Savory, complex, mineral — and a different argument for what Central Otago can do than the more muscular Bannockburn style.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE GUIDE -->
+  <section id="price" class="topic-section">
+    <h2 class="section-title">Price Guide</h2>
+    <p class="section-lead">Burgundy is the only wine region where the gap between entry level and the pinnacle spans three orders of magnitude. Understanding where the value lies at each level is essential.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <div class="price-range">€15–35</div>
+        <div class="price-body">
+          <h4 class="price-label">Bourgogne Rouge / Regional</h4>
+          <p class="price-desc">The starting point. From a good producer, this is a serious introduction to Burgundy Pinot Noir. Look for Bourgogne Rouge from Rousseau, Mugnier, or Dujac — declassified fruit from their village and premier cru parcels. Outside Burgundy: entry Oregon, New Zealand, and Alsace.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€40–90</div>
+        <div class="price-body">
+          <h4 class="price-label">Village Burgundy / Quality New World</h4>
+          <p class="price-desc">Village-level Chambolle-Musigny, Gevrey-Chambertin, or Vosne-Romanée from a respected producer. Also: quality Oregon Pinot (Eyrie, Domaine Drouhin), quality Central Otago (Felton Road entry), and Sonoma Coast.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€90–300</div>
+        <div class="price-body">
+          <h4 class="price-label">Premier Cru Burgundy</h4>
+          <p class="price-desc">The serious tier. Here the site specificity and producer craft become central. Chambolle-Musigny Les Amoureuses (~€300), Gevrey-Chambertin Clos St-Jacques (~€150), Volnay Caillerets (~€100). Price varies dramatically by producer and vintage.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€300–2,000</div>
+        <div class="price-body">
+          <h4 class="price-label">Grand Cru Burgundy</h4>
+          <p class="price-desc">Chambertin (~€500–1,500), Musigny (~€700–2,500), Clos de Vougeot (~€300–800), Richebourg (~€1,000+). Price depends acutely on producer. Rousseau's Chambertin and Roumier's Musigny command premiums; lesser-known owners of the same vineyard may offer better value.</p>
+        </div>
+      </div>
+      <div class="price-tier">
+        <div class="price-range">€2,000–20,000+</div>
+        <div class="price-body">
+          <h4 class="price-label">DRC & Leroy</h4>
+          <p class="price-desc">Romanée-Conti (~€15,000–20,000+ on release, multiples on the secondary market), La Tâche (~€4,000–8,000), Leroy Musigny (~€5,000–10,000). These are investment assets as much as wines. The finest arguments for what Pinot Noir can achieve in the right hands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD PAIRING -->
+  <section id="pairing" class="topic-section">
+    <h2 class="section-title">Food Pairing</h2>
+    <p class="section-lead">Pinot Noir's delicacy, acidity, and earthiness make it one of the most food-versatile red wines. It bridges red meat and fish in a way that heavier reds cannot.</p>
+    <div class="pairing-grid">
+      <div class="pairing-row">
+        <span class="pairing-wine">Village / Regional</span>
+        <span class="pairing-foods">Roast chicken, mushroom risotto, grilled salmon, light charcuterie, quiche, mild soft cheeses. The wine's fruit and acidity work equally well with poultry and fish.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Premier Cru</span>
+        <span class="pairing-foods">Duck confit, roast pigeon, rabbit with mustard, wild mushroom dishes (porcini, chanterelle, truffle), aged Comté, Époisses (classic Burgundian pairing). The savory depth matches the wine's complexity.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Grand Cru</span>
+        <span class="pairing-foods">Roast grouse or pheasant (the classic English pairing for mature red Burgundy), venison, beef fillet with minimal sauce. Age the wine — Grand Cru needs at least 8–10 years before it begins to reveal itself fully.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Oregon / NZ</span>
+        <span class="pairing-foods">Salmon, tuna, duck breast, pork tenderloin, earthy vegetable dishes. New World Pinot tends to be more fruit-forward and works slightly better with richer preparations than young Burgundy.</span>
+      </div>
+      <div class="pairing-row">
+        <span class="pairing-wine">Avoid</span>
+        <span class="pairing-foods">Heavy red meat sauces, powerful spice, very fatty dishes, and robust cheeses (strong blue cheese overwhelms the delicacy of the wine). Pinot Noir's structure cannot compete with assertive flavours.</span>
+      </div>
+    </div>
+  </section>
+
+</TopicLayout>
+
+<style>
+  /* Map */
+  .map-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .region-map {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+  }
+
+  /* Flavour grid */
+  .flavour-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .flavour-col {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.25rem;
+  }
+
+  .flavour-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.875rem;
+  }
+
+  .flavour-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .flavour-list li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    padding-left: 0.875rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .flavour-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* Classification tiers */
+  .classification-tiers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .class-tier {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .class-tier:last-child { border-bottom: none; }
+
+  .tier-grand-cru { border-left: 3px solid var(--accent); }
+  .tier-premier-cru { border-left: 3px solid rgba(201,168,76,0.5); }
+  .tier-village { border-left: 3px solid rgba(201,168,76,0.25); }
+  .tier-regional { border-left: 3px solid var(--border); }
+
+  .tier-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+
+  .tier-share {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .tier-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  /* Price / Pairing (shared with Champagne, but scoped here) */
+  .price-tiers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .price-tier {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.125rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .price-tier:last-child { border-bottom: none; }
+
+  .price-range {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 7rem;
+    padding-top: 0.1rem;
+  }
+
+  .price-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-desc {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .pairing-grid {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .pairing-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .pairing-row:last-child { border-bottom: none; }
+
+  .pairing-wine {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .pairing-foods {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .flavour-grid { grid-template-columns: 1fr; }
+    .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .price-range { width: 5.5rem; font-size: 0.875rem; }
+    .tier-desc { max-width: 100%; }
+  }
+</style>

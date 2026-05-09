@@ -763,8 +763,21 @@ const base = import.meta.env.BASE_URL;
 
   /* Responsive */
   @media (max-width: 700px) {
-    .dosage-labels { grid-template-columns: repeat(4, 1fr); }
-    .dosage-item:nth-child(n+5) { display: none; }
+    .dosage-labels {
+      grid-template-columns: 1fr;
+    }
+    .dosage-item {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+    }
+    .dosage-item:last-child { border-bottom: none; }
+    .dosage-name { width: 6.5rem; flex-shrink: 0; }
+    .dosage-range { width: 4.5rem; flex-shrink: 0; }
+    .dosage-note { flex: 1; }
     .pairing-row { grid-template-columns: 1fr; gap: 0.35rem; }
     .price-range { width: 5.5rem; }
     .prod-step { gap: 1rem; }

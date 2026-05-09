@@ -53,6 +53,21 @@ const base = import.meta.env.BASE_URL;
       </div>
     </header>
 
+    <!-- Mobile section jump (hidden on desktop) -->
+    <div class="mobile-toc-wrap">
+      <details class="mobile-toc">
+        <summary class="mobile-toc-toggle">
+          <span>Contents</span>
+          <svg viewBox="0 0 16 16" fill="none" class="chevron"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <nav class="mobile-toc-nav">
+          {toc.map(item => (
+            <a href={`#${item.id}`} class="mobile-toc-link">{item.label}</a>
+          ))}
+        </nav>
+      </details>
+    </div>
+
     <!-- Body: sidebar TOC + content -->
     <div class="topic-body">
 
@@ -351,9 +366,68 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* Responsive */
+  /* Mobile TOC */
+  .mobile-toc-wrap {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-toc {
+    width: 100%;
+  }
+
+  .mobile-toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .mobile-toc-toggle::-webkit-details-marker { display: none; }
+
+  .chevron {
+    width: 1rem;
+    height: 1rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-toc[open] .chevron { transform: rotate(180deg); }
+
+  .mobile-toc-nav {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.75rem;
+    gap: 0.125rem;
+  }
+
+  .mobile-toc-link {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+
+  .mobile-toc-link:last-child { border-bottom: none; }
+  .mobile-toc-link:hover { color: var(--accent); }
+
   @media (max-width: 900px) {
     .topic-body { grid-template-columns: 1fr; gap: 0; }
     .toc-sidebar { display: none; }
+    .mobile-toc-wrap { display: block; }
   }
 
   @media (max-width: 600px) {
