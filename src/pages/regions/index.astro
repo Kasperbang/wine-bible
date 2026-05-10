@@ -78,10 +78,16 @@ const wineDataJson = JSON.stringify(wineWorldData);
       <span class="bc-sep">›</span>
       <span class="bc-current" id="bc-country"></span>
     </nav>
+    <div class="map-header">
+      <span class="map-flag" id="map-flag"></span>
+      <div>
+        <h2 class="map-title" id="map-title"></h2>
+        <p class="map-subtitle">Select a wine region</p>
+      </div>
+    </div>
     <div class="map-container">
       <svg id="country-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
     </div>
-    <p class="map-hint">Click a wine region to explore</p>
   </section>
 
   <!-- ── LEVEL 3: Region detail panel ─────────────────────────── -->
@@ -126,8 +132,8 @@ const wineDataJson = JSON.stringify(wineWorldData);
   /* ── Country grid ─────────────────────────────────────── */
   .country-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.625rem;
     margin-bottom: 3rem;
   }
 
@@ -136,7 +142,7 @@ const wineDataJson = JSON.stringify(wineWorldData);
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 0.75rem 1rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -152,75 +158,122 @@ const wineDataJson = JSON.stringify(wineWorldData);
     transform: translateY(-2px);
   }
 
-  .country-flag {
-    font-size: 2.25rem;
-    line-height: 1;
-  }
+  .country-flag { font-size: 2rem; line-height: 1; }
 
   .country-name {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--text-secondary);
     text-align: center;
+    line-height: 1.3;
   }
 
-  /* ── Map section ──────────────────────────────────────── */
-  .map-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.5rem;
+  /* ── Map header ───────────────────────────────────────── */
+  .map-header {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .map-flag { font-size: 2.5rem; line-height: 1; }
+
+  .map-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin: 0 0 0.15rem;
+  }
+
+  .map-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ── Map container & SVG ──────────────────────────────── */
+  .map-container {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    /* SVG has its own bg; container just provides the border */
+    background: #0d0906;
   }
 
   #country-svg {
     width: 100%;
-    max-width: 540px;
     height: auto;
+    display: block;
+    max-height: 520px;
   }
 
-  .map-hint {
-    font-size: 0.75rem;
-    text-align: center;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
+  /* SVG elements — applied to dynamically created nodes */
+  .map-bg {
+    fill: #0d0906;
   }
 
   .country-outline {
-    fill: #2a1f14;
-    stroke: #5a4030;
-    stroke-width: 1.2;
+    fill: #1e1208;
+    stroke: #4a3218;
+    stroke-width: 0.6;
     fill-rule: evenodd;
   }
 
-  .region-poly {
-    fill: var(--accent);
-    fill-opacity: 0.12;
-    stroke: var(--accent);
+  /* Subtle bbox area behind each pin */
+  .region-area {
+    fill: rgba(201, 168, 76, 0.07);
+    stroke: rgba(201, 168, 76, 0.2);
+    stroke-width: 0.7;
+    pointer-events: none;
+  }
+
+  /* Outer halo ring — visible on hover */
+  .region-ring {
+    fill: none;
+    stroke: rgba(201, 168, 76, 0.0);
     stroke-width: 1.5;
-    cursor: pointer;
-    transition: fill-opacity 0.15s;
+    transition: stroke 0.2s;
+    pointer-events: none;
   }
 
-  .region-poly:hover {
-    fill-opacity: 0.35;
+  /* Gold dot */
+  .region-dot {
+    fill: #c9a84c;
+    stroke: #0d0906;
+    stroke-width: 1.5;
+    transition: fill 0.15s, r 0.15s;
   }
 
+  /* Label with dark halo for readability over any background */
   .region-label {
-    font-size: 9px;
+    font-size: 9.5px;
     font-family: Inter, sans-serif;
-    fill: var(--accent);
+    fill: #c9a84c;
     text-anchor: middle;
-    dominant-baseline: middle;
     pointer-events: none;
     font-weight: 500;
     letter-spacing: 0.04em;
+    paint-order: stroke fill;
+    stroke: #0d0906;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  /* Hover — whole group */
+  .region-pin { cursor: pointer; }
+
+  .region-pin:hover .region-dot  { fill: #f0d060; }
+  .region-pin:hover .region-ring { stroke: rgba(201, 168, 76, 0.5); }
+  .region-pin:hover .region-label { fill: #f5edd5; }
+  .region-pin:hover .region-area {
+    fill: rgba(201, 168, 76, 0.18);
+    stroke: rgba(201, 168, 76, 0.5);
   }
 
   /* ── Breadcrumb ───────────────────────────────────────── */
@@ -228,36 +281,25 @@ const wineDataJson = JSON.stringify(wineWorldData);
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-size: 0.8125rem;
   }
 
   .bc-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--accent);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    background: none; border: none; padding: 0;
+    color: var(--accent); cursor: pointer;
+    font-family: inherit; font-size: inherit;
+    font-weight: 500; letter-spacing: 0.04em;
   }
-
   .bc-btn:hover { text-decoration: underline; }
-
-  .bc-sep { color: var(--text-muted); }
-
-  .bc-current {
-    color: var(--text-secondary);
-    font-weight: 300;
-  }
+  .bc-sep   { color: var(--text-muted); }
+  .bc-current { color: var(--text-secondary); font-weight: 300; }
 
   /* ── Detail panel ─────────────────────────────────────── */
   .detail-panel {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
     margin-bottom: 3rem;
   }
 
@@ -268,9 +310,7 @@ const wineDataJson = JSON.stringify(wineWorldData);
     padding: 1.25rem 1.5rem;
   }
 
-  .detail-card.full-width {
-    grid-column: 1 / -1;
-  }
+  .detail-card.full-width { grid-column: 1 / -1; }
 
   .detail-label {
     font-size: 0.625rem;
@@ -296,44 +336,27 @@ const wineDataJson = JSON.stringify(wineWorldData);
     font-weight: 300;
   }
 
-  .grape-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.4rem;
+  .grape-tags, .wines-list {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem;
   }
 
   .grape-tag {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    background: var(--accent-dim);
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-  }
-
-  .wines-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.4rem;
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-dim);
+    padding: 0.2rem 0.6rem; border-radius: 2px;
   }
 
   .wine-tag {
     font-size: 0.6875rem;
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-    font-weight: 300;
+    padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 300;
   }
 
   .subzones-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
+    gap: 0.75rem; margin-top: 0.75rem;
   }
 
   .subzone-card {
@@ -345,24 +368,18 @@ const wineDataJson = JSON.stringify(wineWorldData);
 
   .subzone-name {
     font-family: var(--font-serif);
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: 0.35rem;
+    font-size: 0.9375rem; font-weight: 400;
+    color: var(--text-primary); margin-bottom: 0.35rem;
   }
 
   .subzone-grapes {
-    font-size: 0.6875rem;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    margin-bottom: 0.4rem;
+    font-size: 0.6875rem; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 0.4rem;
   }
 
   .subzone-char {
-    font-size: 0.75rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    font-weight: 300;
+    font-size: 0.75rem; line-height: 1.6;
+    color: var(--text-muted); font-weight: 300;
   }
 
   /* ── Region directory ─────────────────────────────────── */
@@ -370,24 +387,24 @@ const wineDataJson = JSON.stringify(wineWorldData);
 
   .dir-heading {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: 2rem;
+    font-size: 1.25rem; font-weight: 400;
+    color: var(--text-primary); margin-bottom: 2rem;
   }
 
   /* ── Utility ──────────────────────────────────────────── */
   .hidden { display: none !important; }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .country-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
     .detail-panel { grid-template-columns: 1fr; }
     .detail-card.full-width { grid-column: 1; }
   }
 </style>
 
 <script define:vars={{ mapsJson, wineDataJson }}>
-  const maps = JSON.parse(mapsJson);
+  const maps    = JSON.parse(mapsJson);
   const wineData = JSON.parse(wineDataJson);
 
   const gridSection   = document.getElementById('country-grid-section');
@@ -398,15 +415,23 @@ const wineDataJson = JSON.stringify(wineWorldData);
   const bcCountry2    = document.getElementById('bc-country2');
   const bcRegion      = document.getElementById('bc-region');
   const detailPanel   = document.getElementById('detail-panel');
+  const mapFlag       = document.getElementById('map-flag');
+  const mapTitle      = document.getElementById('map-title');
 
   let activeCountryKey = null;
+  const ns = 'http://www.w3.org/2000/svg';
 
-  // Level 1 → 2
   document.getElementById('country-grid').addEventListener('click', e => {
     const btn = e.target.closest('.country-btn');
     if (!btn) return;
     showCountryMap(btn.dataset.key);
   });
+
+  function svgEl(tag, attrs) {
+    const el = document.createElementNS(ns, tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    return el;
+  }
 
   function showCountryMap(countryKey) {
     activeCountryKey = countryKey;
@@ -416,44 +441,53 @@ const wineDataJson = JSON.stringify(wineWorldData);
     svg.setAttribute('viewBox', mapData.viewBox);
     svg.innerHTML = '';
 
-    const ns = 'http://www.w3.org/2000/svg';
+    // Dark background — makes this look like a real map, not a card
+    svg.appendChild(svgEl('rect', { width: '100%', height: '100%', class: 'map-bg' }));
 
-    const outline = document.createElementNS(ns, 'path');
-    outline.setAttribute('d', mapData.outline);
-    outline.setAttribute('class', 'country-outline');
-    svg.appendChild(outline);
+    // Country outline
+    svg.appendChild(svgEl('path', { d: mapData.outline, class: 'country-outline' }));
 
+    // Region pins
     mapData.regions.forEach(r => {
-      const g = document.createElementNS(ns, 'g');
+      const g = svgEl('g', { class: 'region-pin' });
       g.dataset.regionKey = r.key;
-      g.style.cursor = 'pointer';
 
-      const poly = document.createElementNS(ns, 'path');
-      poly.setAttribute('d', r.path);
-      poly.setAttribute('class', 'region-poly');
+      // Subtle geographic bbox highlight
+      g.appendChild(svgEl('path', { d: r.path, class: 'region-area' }));
 
-      const text = document.createElementNS(ns, 'text');
-      text.setAttribute('x', r.labelX);
-      text.setAttribute('y', r.labelY);
-      text.setAttribute('class', 'region-label');
-      text.textContent = r.label;
+      // Outer halo ring
+      g.appendChild(svgEl('circle', {
+        cx: r.labelX, cy: r.labelY, r: '8', class: 'region-ring',
+      }));
 
-      g.appendChild(poly);
-      g.appendChild(text);
+      // Gold pin dot
+      g.appendChild(svgEl('circle', {
+        cx: r.labelX, cy: r.labelY, r: '4.5', class: 'region-dot',
+      }));
+
+      // Label below the dot — with dark halo for readability
+      const txt = svgEl('text', {
+        x: r.labelX,
+        y: r.labelY + 15,
+        class: 'region-label',
+      });
+      txt.textContent = r.label;
+      g.appendChild(txt);
+
       g.addEventListener('click', () => showRegionDetail(countryKey, r.key));
       svg.appendChild(g);
     });
 
-    const label = mapData.name;
-    bcCountry.textContent = label;
-    bcCountry2.textContent = label;
+    mapFlag.textContent  = mapData.flag;
+    mapTitle.textContent = mapData.name;
+    bcCountry.textContent  = mapData.name;
+    bcCountry2.textContent = mapData.name;
 
     gridSection.classList.add('hidden');
     detailSection.classList.add('hidden');
     mapSection.classList.remove('hidden');
   }
 
-  // Level 2 → 3
   function showRegionDetail(countryKey, regionKey) {
     const country = wineData[countryKey];
     if (!country) return;
@@ -496,26 +530,20 @@ const wineDataJson = JSON.stringify(wineWorldData);
           <div class="wines-list">${wineTagsHtml}</div>
         </div>
         ${subzonesHtml}
-      </div>
-    `;
+      </div>`;
 
     mapSection.classList.add('hidden');
     detailSection.classList.remove('hidden');
   }
 
-  // Breadcrumb nav
-  document.getElementById('bc-home').addEventListener('click', () => {
+  function goHome() {
     detailSection.classList.add('hidden');
     mapSection.classList.add('hidden');
     gridSection.classList.remove('hidden');
-  });
+  }
 
-  document.getElementById('bc-home2').addEventListener('click', () => {
-    detailSection.classList.add('hidden');
-    mapSection.classList.add('hidden');
-    gridSection.classList.remove('hidden');
-  });
-
+  document.getElementById('bc-home').addEventListener('click', goHome);
+  document.getElementById('bc-home2').addEventListener('click', goHome);
   document.getElementById('bc-country2').addEventListener('click', () => {
     detailSection.classList.add('hidden');
     mapSection.classList.remove('hidden');

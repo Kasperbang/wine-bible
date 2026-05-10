@@ -67,6 +67,8 @@ const COUNTRY_DEFS: CountryDef[] = [
   {
     key: 'france', name: 'France', flag: '🇫🇷',
     isoIds: ['250'],
+    // ISO 250 includes French Guiana, Martinique, Réunion etc. — lock to mainland
+    viewBbox: [-5.5, 41.0, 10.0, 51.6],
     regions: [
       { key: 'champagne',  label: 'Champagne',  bbox: [ 3.2, 48.4,  5.2, 49.7] },
       { key: 'alsace',     label: 'Alsace',     bbox: [ 7.1, 47.4,  7.9, 49.1] },
@@ -91,6 +93,8 @@ const COUNTRY_DEFS: CountryDef[] = [
   {
     key: 'spain', name: 'Spain', flag: '🇪🇸',
     isoIds: ['724'],
+    // Lock to Iberian Peninsula — excludes Canary Islands (~18°W)
+    viewBbox: [-9.5, 35.8, 4.5, 44.0],
     regions: [
       { key: 'rioja',      label: 'Rioja',       bbox: [-3.6, 41.9, -1.4, 42.8] },
       { key: 'ribera',     label: 'Ribera',      bbox: [-4.6, 41.2, -2.6, 41.9] },
@@ -111,6 +115,8 @@ const COUNTRY_DEFS: CountryDef[] = [
   {
     key: 'portugal', name: 'Portugal', flag: '🇵🇹',
     isoIds: ['620'],
+    // Lock to mainland — excludes Azores (~28°W) and Madeira (~17°W)
+    viewBbox: [-9.5, 36.8, -6.1, 42.2],
     regions: [
       { key: 'vinhoverde', label: 'Vinho Verde', bbox: [-9.0, 41.0, -7.4, 42.2] },
       { key: 'douro',      label: 'Douro',       bbox: [-8.0, 40.8, -6.5, 41.7] },
