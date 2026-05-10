@@ -1,7 +1,9 @@
 ---
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
 import { wineWorldData } from '../../data/wine-world.ts';
-import { countryMaps } from '../../data/wine-maps.ts';
+import { generateMaps } from '../../data/map-generator.ts';
+
+const countryMaps = generateMaps();
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
